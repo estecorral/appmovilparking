@@ -1,0 +1,20 @@
+page-regist-entreprise {
+  .background {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(10deg, #0080FF, #E0F2F7);
+  }
+  .scroll-content{
+    text-align: center;
+  }
+  ion-card.card{
+    background: rgba(232, 230, 230, 0.8px);
+    border-radius: 10px;
+  }
+  .item{
+    background: rgba(232, 230, 230, 0px);
+  }
+  ion-input{
+    border-bottom: #0080FF solid 1px;
+  }
+}

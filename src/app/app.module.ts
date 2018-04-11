@@ -11,10 +11,9 @@ import { HomePage } from '../pages/home/home';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { firebaseConfig} from "../config/firebase.config";
+import { firebaseConfig } from "../config/firebase.config";
 
 // servicios
-import {UsuarioService} from "../providers/usuario/usuario";
 
 @NgModule({
   declarations: [
@@ -36,8 +35,7 @@ import {UsuarioService} from "../providers/usuario/usuario";
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
-    UsuarioService
+    {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
 export class AppModule {}
