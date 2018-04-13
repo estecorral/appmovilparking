@@ -2,13 +2,9 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {UserEntreprise} from "../../models/userEntreprise";
 import {UserParking} from "../../models/userParking";
-
-/**
- * Generated class for the LoginPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import {AngularFireAuth} from "angularfire2/auth";
+import {User} from "../../models/user";
+import { HomePage } from "../home/home";
 
 @IonicPage()
 @Component({
@@ -16,13 +12,18 @@ import {UserParking} from "../../models/userParking";
   templateUrl: 'login.html',
 })
 export class LoginPage {
-  userEntreprise = {} as UserEntreprise;
-  userParking = {} as UserParking;
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  user = {} as User;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private globarAuth: AngularFireAuth) {
   }
-  login(){
-
+  async login(user :User) {
+    try {
+      const result = this.globarAuth.auth.signInWithEmailAndPassword(user.email, user.password);
+      console.log(result);
+      this.navCtrl.setRoot('HomePage');
+    }
+    catch (e){
+      console.error(e);
+    }
   }
 
   registNewParking(){

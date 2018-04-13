@@ -17,41 +17,44 @@
     <ion-list inset>
       <ion-item>
         <ion-label>email</ion-label>
-        <ion-input type="email" name="email"></ion-input>
+        <ion-input type="email" name="email" [(ngModel)]="user.email"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label>password</ion-label>
-        <ion-input type="password" name="password"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>nombre empresa</ion-label>
-        <ion-input type="text" name="nombre"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>Seleccione Provincia</ion-label>
-        <ion-select ></ion-select>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>Seleccione Localidad</ion-label>
-        <ion-select ></ion-select>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>telefono</ion-label>
-        <ion-input type="text" name="telefono"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>CIF</ion-label>
-        <ion-input type="text" name="cif"></ion-input>
+        <ion-input type="password" name="password" [(ngModel)]="user.password"></ion-input>
       </ion-item>
       <br/>
-      <button ion-button block><ion-icon md="md-log-in"></ion-icon>Registrar empresa</button>
+      <button ion-button block (click)="registUser(user)"><ion-icon md="md-log-in"></ion-icon>Registrar empresa</button>
       <button ion-button block color="danger">Cancelar</button>
+
+      <!--  <ion-item>
+          <ion-label>nombre empresa</ion-label>
+          <ion-input type="text" name="nombre"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Seleccione Provincia</ion-label>
+          <ion-select ></ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Seleccione Localidad</ion-label>
+          <ion-select ></ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>telefono</ion-label>
+          <ion-input type="text" name="telefono"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>CIF</ion-label>
+          <ion-input type="text" name="cif"></ion-input>
+        </ion-item>
+        <br/>
+        <button ion-button block><ion-icon md="md-log-in"></ion-icon>Registrar empresa</button>
+        <button ion-button block color="danger">Cancelar</button>-->
     </ion-list>
   </ion-card>
 </ion-content>

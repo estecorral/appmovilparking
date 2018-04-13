@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {User} from "../../models/user";
+import {AngularFireAuth} from "angularfire2/auth";
+import { RegistEntreprise2Page} from "../regist-entreprise2/regist-entreprise2";
 
 /**
  * Generated class for the RegistEntreprisePage page.
@@ -15,11 +18,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class RegistEntreprisePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  user = {} as User;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private authPark: AngularFireAuth) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad RegistEntreprisePage');
+  async registUser(user: User) {
+    const result = this.authPark.auth.createUserAndRetrieveDataWithEmailAndPassword(user.email, user.password)
+      .then(()=> this.navCtrl.push('RegistEntreprise2Page'));
+    console.log(result);
   }
-
 }

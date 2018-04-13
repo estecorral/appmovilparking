@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the RegistParkingPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { AngularFireAuth } from "angularfire2/auth";
+import { User } from "../../models/user";
+import {RegistParking2Page} from "../regist-parking2/regist-parking2";
 
 @IonicPage()
 @Component({
@@ -14,12 +10,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'regist-parking.html',
 })
 export class RegistParkingPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  user = {} as User;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private authPark: AngularFireAuth) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad RegistParkingPage');
+ async registUser(user: User){
+   const result = this.authPark.auth.createUserAndRetrieveDataWithEmailAndPassword(user.email, user.password)
+     .then(()=> this.navCtrl.push('RegistParking2Page'));
+   console.log(result);
   }
-
 }
