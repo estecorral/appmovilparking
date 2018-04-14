@@ -18,8 +18,9 @@ export class LoginPage {
   async login(user :User) {
     try {
       const result = this.globarAuth.auth.signInWithEmailAndPassword(user.email, user.password);
-      console.log(result);
-      this.navCtrl.setRoot('HomePage');
+      if(result) {
+        this.navCtrl.setRoot('HomePage');
+      }
     }
     catch (e){
       console.error(e);

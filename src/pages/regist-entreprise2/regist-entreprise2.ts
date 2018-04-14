@@ -20,16 +20,15 @@ import {UserEntreprise} from "../../models/userEntreprise";
 export class RegistEntreprise2Page {
   userEntreprise = {}as UserEntreprise;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private authPark: AngularFireAuth,
+  constructor(public navCtrl: NavController, public navParams: NavParams, private authEntreprise: AngularFireAuth,
               private afDatabase: AngularFireDatabase) {
   }
 
   createProfile() {
     this.userEntreprise.role = Role.entreprise;
-    console.log(this.userEntreprise);
-    this.authPark.authState.take(1).subscribe(auth => {
-      this.afDatabase.list(`userEntreprise/${auth.uid}`)
-        .push(this.userEntreprise).then(() => this.navCtrl.push('LoginPage'));
+    this.authEntreprise.authState.take(1).subscribe(auth => {
+      this.afDatabase.object(`userEntreprise/${auth.uid}`)
+        .set(this.userEntreprise).then(() => this.navCtrl.setRoot('LoginPage'));
     });
   }
 }

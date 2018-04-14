@@ -17,8 +17,7 @@ import { firebaseConfig } from "../config/firebase.config";
 
 @NgModule({
   declarations: [
-    MyApp,
-    HomePage
+    MyApp
   ],
   imports: [
     BrowserModule,
@@ -29,8 +28,7 @@ import { firebaseConfig } from "../config/firebase.config";
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    HomePage
+    MyApp
   ],
   providers: [
     StatusBar,

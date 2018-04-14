@@ -29,8 +29,8 @@ export class RegistParking2Page {
     this.userParking.role = Role.parking;
     console.log(this.userParking);
     this.authPark.authState.take(1).subscribe(auth => {
-      this.afDatabase.list(`userParking/${auth.uid}`)
-        .push(this.userParking).then(() => this.navCtrl.push('LoginPage'));
+      this.afDatabase.object(`userParking/${auth.uid}`)
+        .set(this.userParking).then(() => this.navCtrl.push('LoginPage'));
     });
   }
 }
