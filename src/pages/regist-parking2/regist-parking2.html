@@ -23,71 +23,71 @@
 
   <ion-item>
     <ion-label>Provincia</ion-label>
-    <ion-input type="text" name="provincia" [(ngModel)]="userParking.provincia"></ion-input>
+    <ion-input type="text" name="provincia" [(ngModel)]="parking.provincia"></ion-input>
   </ion-item>
 
-  <ion-item>
-    <ion-label>Seleccione Localidad</ion-label>
-    <ion-input type="text" name="localidad" [(ngModel)]="userParking.localidad"></ion-input>
-  </ion-item>
+      <ion-item>
+        <ion-label>Seleccione Localidad</ion-label>
+        <ion-input type="text" name="localidad" [(ngModel)]="parking.localidad"></ion-input>
+      </ion-item>
 
-  <ion-item>
-    <ion-label>dirección</ion-label>
-    <ion-input type="text" name="direccion" [(ngModel)]="userParking.direccion"></ion-input>
-  </ion-item>
+      <ion-item>
+        <ion-label>dirección</ion-label>
+        <ion-input type="text" name="direccion" [(ngModel)]="parking.direccion"></ion-input>
+      </ion-item>
 
-  <ion-item>
-    <ion-label>telefono</ion-label>
-    <ion-input type="text" name="telefono"  [(ngModel)]="userParking.telefono"></ion-input>
-  </ion-item>
+      <ion-item>
+        <ion-label>telefono</ion-label>
+        <ion-input type="text" name="telefono"  [(ngModel)]="parking.telefono"></ion-input>
+      </ion-item>
 
-  <ion-item>
-    <ion-label>Nº plazas parking</ion-label>
-    <ion-input type="number" name="plazas" [(ngModel)]="userParking.plazas"></ion-input>
-  </ion-item>
-  <br/>
+      <ion-item>
+        <ion-label>Nº plazas parking</ion-label>
+        <ion-input type="number" name="plazas" [(ngModel)]="parking.plazas" ngDefaultControl></ion-input>
+      </ion-item>
+      <br/>
 
-  </ion-list>
-  </ion-card>
-
-    <ion-card>
-      <ion-list inset>
-        <ion-list-header>
-          SERVICIOS PARKING
-        </ion-list-header>
-
-        <ion-item>
-          <ion-label>Cafeteria</ion-label>
-          <ion-radio value="cafeteria"></ion-radio>
-        </ion-item>
-
-        <ion-item>
-          <ion-label>Oficinas y locales</ion-label>
-          <ion-radio value="oficinas"></ion-radio>
-        </ion-item>
-
-        <ion-item>
-          <ion-label>Vigilancia activa</ion-label>
-          <ion-radio value="vigilancia"></ion-radio>
-        </ion-item>
-
-        <ion-item>
-          <ion-label>Accesos controlados</ion-label>
-          <ion-radio value="accesscotrol"></ion-radio>
-        </ion-item>
-
-        <ion-item>
-          <ion-label>Lavado Vehículos</ion-label>
-          <ion-radio value="lavado"></ion-radio>
-        </ion-item>
-
-        <ion-item>
-          <ion-label>Alquiler de naves</ion-label>
-          <ion-radio value="alqNaves"></ion-radio>
-        </ion-item>
-        <br/>
-        <button ion-button block (click)="createProfile()">Registrar Parking</button>
       </ion-list>
+      </ion-card>
 
-    </ion-card>
-</ion-content>
+      <ion-card>
+        <ion-list inset>
+          <ion-list-header>
+            SERVICIOS PARKING
+          </ion-list-header>
+          <ion-item>
+            <ion-label>Cafeteria</ion-label>
+            <ion-radio value="cafeteria"></ion-radio>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Oficinas y locales</ion-label>
+            <ion-radio value="oficinas"></ion-radio>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Vigilancia activa</ion-label>
+            <ion-radio value="vigilancia"></ion-radio>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Accesos controlados</ion-label>
+            <ion-radio value="accesos cotrolados"></ion-radio>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Lavado Vehículos</ion-label>
+            <ion-radio value="lavado"></ion-radio>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Alquiler de naves</ion-label>
+            <ion-radio value="alquiler Naves"></ion-radio>
+          </ion-item>
+          <br/>
+          <button ion-button block (click)="createProfile()">Registrar Parking</button>
+        </ion-list>
+
+      </ion-card>
+  </ion-content>
+

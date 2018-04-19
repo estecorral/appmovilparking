@@ -24,12 +24,14 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-list *ngIf="esParking()">
-    <ion-avatar item-start>
-      <img src="../../assets/imgs/login_inicial.jpg">
-    </ion-avatar>
-    <h3>parking</h3>
-    <button ion-item>
+  <ion-list *ngIf="userParkingData">
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="../../assets/imgs/login_inicial.jpg">
+      </ion-avatar>
+      <h3>{{ userParkingData.name }}</h3>
+    </ion-item>
+      <button ion-item>
       <ion-icon name="md-briefcase"></ion-icon>
       Empresas de transporte
     </button>
@@ -49,16 +51,20 @@
       <ion-icon name="md-mail"></ion-icon>
       Contacto / Sugerencias
     </button>
+    <button ion-item (click)="logOut()">
+      <ion-icon md="md-log-out"></ion-icon>
+      LogOut
+    </button>
   </ion-list>
 
-  <ion-list *ngIf="!esParking()">
+  <ion-list *ngIf="userEntrepriseData">
     <ion-item>
       <ion-avatar item-start>
         <img src="../../assets/imgs/truck.jpg">
       </ion-avatar>
-      <h2>Empresa</h2>
+      <h2>{{userEntrepriseData.nombre}}</h2>
     </ion-item>
-    <button ion-item>
+    <button ion-item (click)="buscarParking()">
       <ion-icon name="md-search"></ion-icon>
       Buscar Parking
     </button>
@@ -74,6 +80,10 @@
       <ion-icon name="md-mail"></ion-icon>
       Contacto / Sugerencias
     </button>
+    <button ion-item (click)="logOut()">
+      <ion-icon md="md-log-out"></ion-icon>
+      LogOut
+    </button>
   </ion-list>
 </ion-content>
 </ion-menu>
@@ -81,14 +91,14 @@
 
 <ion-content>
   <div class="card-center-page">
-  <ion-card *ngIf="esParking()">
+  <ion-card *ngIf="userParkingData">
     <img src="../../assets/imgs/login_inicial.jpg">
-    <div class="card-title">Parking</div>
+    <div class="card-title">{{userParkingData.name}}</div>
   </ion-card>
 
-  <ion-card *ngIf="!esParking()">
+  <ion-card *ngIf="userEntrepriseData">
     <img src="../../assets/imgs/truck.jpg">
-    <div class="card-title">Empresa</div>
+    <div class="card-title">{{userEntrepriseData.nombre}}</div>
   </ion-card>
   </div>
 </ion-content>

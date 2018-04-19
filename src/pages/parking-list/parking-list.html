@@ -1,0 +1,56 @@
+<!--
+  Generated template for the ParkingListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header class="navColor">
+
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu" md="md-menu" (click)="content"></ion-icon>
+    </button>
+    <ion-title>
+      Buscar parking
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-menu [content]="content">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Home</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="../../assets/imgs/truck.jpg">
+      </ion-avatar>
+      <h2>{{userEntrepriseData.nombre}}</h2>
+    </ion-item>
+    <button ion-item>
+      <ion-icon name="md-search"></ion-icon>
+      Buscar Parking
+    </button>
+    <button ion-item>
+      <ion-icon name="md-list-box"></ion-icon>
+      Mis Contratos
+    </button>
+    <button ion-item>
+      <ion-icon name="md-done-all"></ion-icon>
+      Mis Reservas
+    </button>
+    <button ion-item>
+      <ion-icon name="md-mail"></ion-icon>
+      Contacto / Sugerencias
+    </button>
+  </ion-list>
+  </ion-content>
+</ion-menu>
+<ion-nav id="nav" #content [root]="rootPage"></ion-nav>
+
+<ion-content>
+
+</ion-content>

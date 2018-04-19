@@ -14,6 +14,7 @@ import { firebaseConfig } from "../config/firebase.config";
 // servicios
 import { UserParkingProvider } from '../providers/user-parking/user-parking';
 import { UserEntrepriseProvider } from '../providers/user-entreprise/user-entreprise';
+import { ParkingsProvider } from '../providers/parkings/parkings';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { UserEntrepriseProvider } from '../providers/user-entreprise/user-entrep
 
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserParkingProvider,
-    UserEntrepriseProvider
+    UserEntrepriseProvider,
+    ParkingsProvider
   ]
 })
 export class AppModule {}
