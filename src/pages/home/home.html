@@ -64,7 +64,7 @@
       </ion-avatar>
       <h2>{{userEntrepriseData.nombre}}</h2>
     </ion-item>
-    <button ion-item (click)="buscarParking()">
+    <button ion-item (click)="buscarParking(userEntrepriseData.nombre)">
       <ion-icon name="md-search"></ion-icon>
       Buscar Parking
     </button>

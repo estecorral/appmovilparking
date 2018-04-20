@@ -45,6 +45,6 @@ export class RegistParking2Page {
     this.parking.key = this.clave;
     this.parking.email = this.email;
     this.parking.name = this.name;
-    this.afDatabase.object(`parkings`).set(this.parking);
+    this.afDatabase.list(`parkings`).push(this.parking);
   }
 }

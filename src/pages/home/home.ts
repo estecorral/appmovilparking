@@ -53,7 +53,7 @@ export class HomePage {
     this.navCtrl.setRoot(LoginPage);
   }
 
-  buscarParking(){
-    this.navCtrl.push('ParkingListPage');
+  buscarParking(nombreEmpresa: string){
+    this.navCtrl.push(ParkingListPage);
   }
 }
