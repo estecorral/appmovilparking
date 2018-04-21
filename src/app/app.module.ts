@@ -22,6 +22,7 @@ import {RegistEntreprise2Page} from "../pages/regist-entreprise2/regist-entrepri
 import {RegistParkingPage} from "../pages/regist-parking/regist-parking";
 import {RegistParking2Page} from "../pages/regist-parking2/regist-parking2";
 import {ParkingListPage} from "../pages/parking-list/parking-list";
+import { SearchParkingsProvider } from '../providers/search-parkings/search-parkings';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,9 @@ import {ParkingListPage} from "../pages/parking-list/parking-list";
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserParkingProvider,
     UserEntrepriseProvider,
-    ParkingsProvider
+    ParkingsProvider,
+    SearchParkingsProvider,
+    SearchParkingsProvider
   ]
 })
 export class AppModule {}
