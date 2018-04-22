@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {AngularFireDatabase} from "angularfire2/database";
 import {Observable} from "rxjs/Observable";
 import {Subject} from "rxjs/Subject";
+import {DetalleParkingPage} from "../detalle-parking/detalle-parking";
 /**
  * Generated class for the ParkingListPage page.
  *
@@ -25,14 +26,23 @@ export class ParkingListPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public afDatabase: AngularFireDatabase) {
     Observable.combineLatest(this.startobs, this.endobs).subscribe((value) => {
       this.firequery(value[0], value[1]).subscribe((localidades) => {
+        /*if (localidades.length > 0){
+          for (let i = 0, t = localidades.length; i <= t; i++) {
+              localidades[i].localidad = localidades[i].localidad.toLowerCase();
+            }
+          }*/
         this.localidades = localidades;
         console.log(localidades);
+        console.log(localidades.length);
+       // console.log(localidades[0].localidad);
+        console.log(value[0]);
+        console.log(value[1]);
       });
     });
   }
-
   getItems($event) {
     let val = $event.target.value;
+    //val = val.toLowerCase();
     this.startAt.next(val);
     this.endAt.next(val + "\uf8ff");
   }
@@ -40,5 +50,9 @@ export class ParkingListPage {
   firequery(start, end){
     return this.afDatabase.list('parkings', ref => ref.limitToFirst(4).orderByChild('localidad')
       .startAt(start).endAt(end)).valueChanges();
+  }
+
+  goDetalle(){
+    this.navCtrl.push(DetalleParkingPage);
   }
 }

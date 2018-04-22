@@ -17,11 +17,10 @@
 
 </ion-header>
 
-
 <ion-content>
  <ion-searchbar (ionInput)="getItems($event)" placeholder="Intoduce localidad..."></ion-searchbar>
   <ion-list>
-  <ion-item *ngFor="let parking of localidades">
+    <button ion-item  *ngFor="let parking of localidades"  (click)="goDetalle()">
       <ion-avatar item-start class="avatar-circle">
         <p class="initials">{{parking.name | slice:0:1 }}</p>
       </ion-avatar>
@@ -29,6 +28,6 @@
       <h3>{{parking.email}}</h3>
       <p>Plazas disponibles: {{parking.plazas}}</p>
     <p *ngIf="localidades?.length < 1">No se han encontrado parkings en la localidad seleccionada</p>
-    </ion-item>
+    </button>
   </ion-list>
 </ion-content>

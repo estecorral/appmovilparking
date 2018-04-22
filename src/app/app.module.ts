@@ -22,12 +22,13 @@ import {RegistEntreprise2Page} from "../pages/regist-entreprise2/regist-entrepri
 import {RegistParkingPage} from "../pages/regist-parking/regist-parking";
 import {RegistParking2Page} from "../pages/regist-parking2/regist-parking2";
 import {ParkingListPage} from "../pages/parking-list/parking-list";
-import { SearchParkingsProvider } from '../providers/search-parkings/search-parkings';
+import {DetalleParkingPage} from "../pages/detalle-parking/detalle-parking";
 
 @NgModule({
   declarations: [
     MyApp,
-    ParkingListPage
+    ParkingListPage,
+    DetalleParkingPage
   ],
   imports: [
     BrowserModule,
@@ -40,7 +41,8 @@ import { SearchParkingsProvider } from '../providers/search-parkings/search-park
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    ParkingListPage
+    ParkingListPage,
+    DetalleParkingPage
   ],
   providers: [
     StatusBar,
@@ -50,8 +52,6 @@ import { SearchParkingsProvider } from '../providers/search-parkings/search-park
     UserParkingProvider,
     UserEntrepriseProvider,
     ParkingsProvider,
-    SearchParkingsProvider,
-    SearchParkingsProvider
   ]
 })
 export class AppModule {}
