@@ -7,9 +7,6 @@
 <ion-header class="navColor">
 
   <ion-navbar color="primary">
-    <button ion-button menuToggle>
-      <ion-icon name="menu" md="md-menu" (click)="content"></ion-icon>
-    </button>
     <ion-title>
       Buscar Parking
     </ion-title>
@@ -20,7 +17,7 @@
 <ion-content>
  <ion-searchbar (ionInput)="getItems($event)" placeholder="Intoduce localidad..."></ion-searchbar>
   <ion-list>
-    <button ion-item  *ngFor="let parking of localidades"  (click)="goDetalle()">
+    <button ion-item  *ngFor="let parking of localidades"  (click)="goDetalle(parking)">
       <ion-avatar item-start class="avatar-circle">
         <p class="initials">{{parking.name | slice:0:1 }}</p>
       </ion-avatar>

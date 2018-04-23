@@ -43,7 +43,7 @@
 
       <ion-item>
         <ion-label>Nº plazas parking</ion-label>
-        <ion-input type="number" name="plazas" [(ngModel)]="parking.plazas" ngDefaultControl></ion-input>
+        <ion-input type="text" name="plazas" [(ngModel)]="parking.plazas" ngDefaultControl></ion-input>
       </ion-item>
       <br/>
 
@@ -51,42 +51,22 @@
       </ion-card>
 
       <ion-card>
-        <ion-list inset>
-          <ion-list-header>
-            SERVICIOS PARKING
-          </ion-list-header>
+        <ion-list>
           <ion-item>
-            <ion-label>Cafeteria</ion-label>
-            <ion-radio value="cafeteria"></ion-radio>
+            <ion-label>Servicios</ion-label>
+            <ion-select [(ngModel)]="parking.servicios" multiple="true" cancelText="Cancelar" okText="Aceptar">
+              <ion-option value="Cafeteria">Cafeteria</ion-option>
+              <ion-option value="Restaurante">Restaurante</ion-option>
+              <ion-option value="Alquiler Coches">Alquiler Coches</ion-option>
+              <ion-option value="Alquiler Naves">Alquiler Naves</ion-option>
+              <ion-option value="Alquiler Oficinas">Alquiler Oficinas</ion-option>
+              <ion-option value="Lavado de vehículos">Lavado de vehículos</ion-option>
+              <ion-option value="Vigilancia activa">Vigilancia Activa</ion-option>
+              <ion-option value="Control de acceso">Control de acceso</ion-option>
+            </ion-select>
           </ion-item>
-
-          <ion-item>
-            <ion-label>Oficinas y locales</ion-label>
-            <ion-radio value="oficinas"></ion-radio>
-          </ion-item>
-
-          <ion-item>
-            <ion-label>Vigilancia activa</ion-label>
-            <ion-radio value="vigilancia"></ion-radio>
-          </ion-item>
-
-          <ion-item>
-            <ion-label>Accesos controlados</ion-label>
-            <ion-radio value="accesos cotrolados"></ion-radio>
-          </ion-item>
-
-          <ion-item>
-            <ion-label>Lavado Vehículos</ion-label>
-            <ion-radio value="lavado"></ion-radio>
-          </ion-item>
-
-          <ion-item>
-            <ion-label>Alquiler de naves</ion-label>
-            <ion-radio value="alquiler Naves"></ion-radio>
-          </ion-item>
-          <br/>
-          <button ion-button block (click)="createProfile()">Registrar Parking</button>
         </ion-list>
+          <button ion-button block (click)="createProfile()">Registrar Parking</button>
 
       </ion-card>
   </ion-content>

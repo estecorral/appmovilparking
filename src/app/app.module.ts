@@ -15,6 +15,8 @@ import { firebaseConfig } from "../config/firebase.config";
 import { UserParkingProvider } from '../providers/user-parking/user-parking';
 import { UserEntrepriseProvider } from '../providers/user-entreprise/user-entreprise';
 import { ParkingsProvider } from '../providers/parkings/parkings';
+
+//pages
 import {HomePage} from "../pages/home/home";
 import {LoginPage} from "../pages/login/login";
 import {RegistEntreprisePage} from "../pages/regist-entreprise/regist-entreprise";
@@ -23,12 +25,14 @@ import {RegistParkingPage} from "../pages/regist-parking/regist-parking";
 import {RegistParking2Page} from "../pages/regist-parking2/regist-parking2";
 import {ParkingListPage} from "../pages/parking-list/parking-list";
 import {DetalleParkingPage} from "../pages/detalle-parking/detalle-parking";
+import {ReservaPlazasPage} from "../pages/reserva-plazas/reserva-plazas";
 
 @NgModule({
   declarations: [
     MyApp,
     ParkingListPage,
-    DetalleParkingPage
+    DetalleParkingPage,
+    ReservaPlazasPage
   ],
   imports: [
     BrowserModule,
@@ -42,7 +46,8 @@ import {DetalleParkingPage} from "../pages/detalle-parking/detalle-parking";
   entryComponents: [
     MyApp,
     ParkingListPage,
-    DetalleParkingPage
+    DetalleParkingPage,
+    ReservaPlazasPage
   ],
   providers: [
     StatusBar,

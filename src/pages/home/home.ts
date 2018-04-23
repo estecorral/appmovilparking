@@ -36,7 +36,6 @@ export class HomePage {
           this.userEntrepriseData = userData;
         });
     });
-
   }
 
   ionViewWillLoad() {

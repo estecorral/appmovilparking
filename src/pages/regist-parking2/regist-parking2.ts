@@ -47,4 +47,5 @@ export class RegistParking2Page {
     this.parking.name = this.name;
     this.afDatabase.list(`parkings`).push(this.parking);
   }
+
 }

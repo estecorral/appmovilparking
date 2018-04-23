@@ -52,7 +52,7 @@ export class ParkingListPage {
       .startAt(start).endAt(end)).valueChanges();
   }
 
-  goDetalle(){
-    this.navCtrl.push(DetalleParkingPage);
+  goDetalle(parking){
+    this.navCtrl.push(DetalleParkingPage, {parking});
   }
 }

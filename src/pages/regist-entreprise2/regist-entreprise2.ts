@@ -43,6 +43,6 @@ export class RegistEntreprise2Page {
     this.entreprise.nombre = this.nombre;
     this.entreprise.key = this.clave;
     this.entreprise.email = this.email;
-    this.afDatabase.object('entreprises').set(this.entreprise);
+    this.afDatabase.list('entreprises').push(this.entreprise);
   }
 }
