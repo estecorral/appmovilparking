@@ -42,15 +42,15 @@
     </ion-item>
     <ion-item>
       <ion-label color="primary">Nº de plazas a reservar</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="number" [(ngModel)]="reserva.plazas"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label color="primary">Persona de contacto</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" [(ngModel)]="reserva.nombreContacto"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label color="primary">Observaciones</ion-label>
-      <ion-textarea type="text"></ion-textarea>
+      <ion-textarea type="text" [(ngModel)]="reserva.observaciones"></ion-textarea>
     </ion-item>
   </ion-list>
  <div class="reservaButton">

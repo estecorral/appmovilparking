@@ -4,6 +4,7 @@ import {AngularFireAuth} from "angularfire2/auth";
 import {AngularFireDatabase} from "angularfire2/database";
 import {LoginPage} from "../login/login";
 import {ParkingListPage} from "../parking-list/parking-list";
+import {AuthUserProvider} from "../../providers/auth-user/auth-user";
 
 /**
  * Generated class for the HomePage page.
@@ -21,13 +22,21 @@ export class HomePage {
 
   userParkingData: {};
   userEntrepriseData: {};
-  clave: string;
+
   constructor(public navCtrl: NavController, public navParams: NavParams,
               private toast: ToastController, private userAuth: AngularFireAuth,
-              private afDatabase: AngularFireDatabase) {
+              private afDatabase: AngularFireDatabase, private authUser: AuthUserProvider) {
 
-    this.userAuth.authState.subscribe(data => {
-     this.afDatabase.object(`userParking/${data.uid}`).valueChanges()
+    this.authUser.verificaUsuario().subscribe(data => {
+      if (!data){
+        return;
+      }
+      this.toast.create({
+        message: `Bienvenido, ${data.email}`,
+        duration: 3000
+      }).present();
+
+      this.afDatabase.object(`userParking/${data.uid}`).valueChanges()
         .subscribe( userData => {
           this.userParkingData = userData;
         });
@@ -36,19 +45,21 @@ export class HomePage {
           this.userEntrepriseData = userData;
         });
     });
-  }
-
-  ionViewWillLoad() {
-    this.userAuth.authState.subscribe(data =>{
-      this.clave = data.uid;
-      this.toast.create({
-        message: `Bienvenido, ${data.email}`,
-        duration: 3000
-      }).present();
-    });
+   /* this.userAuth.authState.subscribe(data => {
+     this.afDatabase.object(`userParking/${data.uid}`).valueChanges()
+        .subscribe( userData => {
+          this.userParkingData = userData;
+        });
+      this.afDatabase.object(`userEntreprise/${data.uid}`).valueChanges()
+        .subscribe( userData => {
+          this.userEntrepriseData = userData;
+        });
+    });*/
   }
 
   logOut(){
+    this.authUser.logOut();
+    // this.userAuth.auth.signOut();
     this.navCtrl.setRoot(LoginPage);
   }
 

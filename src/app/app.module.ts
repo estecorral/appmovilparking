@@ -26,6 +26,7 @@ import {RegistParking2Page} from "../pages/regist-parking2/regist-parking2";
 import {ParkingListPage} from "../pages/parking-list/parking-list";
 import {DetalleParkingPage} from "../pages/detalle-parking/detalle-parking";
 import {ReservaPlazasPage} from "../pages/reserva-plazas/reserva-plazas";
+import { AuthUserProvider } from '../providers/auth-user/auth-user';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import {ReservaPlazasPage} from "../pages/reserva-plazas/reserva-plazas";
     UserParkingProvider,
     UserEntrepriseProvider,
     ParkingsProvider,
+    AuthUserProvider,
   ]
 })
 export class AppModule {}
