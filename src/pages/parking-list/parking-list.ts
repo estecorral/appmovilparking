@@ -26,23 +26,12 @@ export class ParkingListPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public afDatabase: AngularFireDatabase) {
     Observable.combineLatest(this.startobs, this.endobs).subscribe((value) => {
       this.firequery(value[0], value[1]).subscribe((localidades) => {
-        /*if (localidades.length > 0){
-          for (let i = 0, t = localidades.length; i <= t; i++) {
-              localidades[i].localidad = localidades[i].localidad.toLowerCase();
-            }
-          }*/
         this.localidades = localidades;
-        console.log(localidades);
-        console.log(localidades.length);
-       // console.log(localidades[0].localidad);
-        console.log(value[0]);
-        console.log(value[1]);
       });
     });
   }
   getItems($event) {
     let val = $event.target.value;
-    //val = val.toLowerCase();
     this.startAt.next(val);
     this.endAt.next(val + "\uf8ff");
   }

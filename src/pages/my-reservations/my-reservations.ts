@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {AngularFireDatabase} from "angularfire2/database";
+import {Reserva} from "../../models/reserva";
+import {AuthUserProvider} from "../../providers/auth-user/auth-user";
 
 /**
  * Generated class for the MyReservationsPage page.
@@ -15,11 +18,37 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class MyReservationsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  reservas = [];
+  userEntrepriseData: any;
+  claveEmpresa: string;
+  parkings: any;
 
+  constructor(public navCtrl: NavController, public navParams: NavParams, private afDataBase: AngularFireDatabase,
+              private userAuth: AuthUserProvider) {
+    this.userAuth.verificaUsuario().subscribe(data => {
+      if (!data){
+        return;
+      }
+      this.afDataBase.object(`userEntreprise/${data.uid}`).valueChanges()
+        .subscribe( userData => {
+          this.userEntrepriseData = userData;
+          this.claveEmpresa = data.uid;
+        });
+    });
+
+  }
   ionViewDidLoad() {
-    console.log('ionViewDidLoad MyReservationsPage');
+    this.afDataBase.list('reserva').valueChanges().subscribe( reservasData => {
+      if(!reservasData){
+        return;
+      }
+      let j = 0;
+      for(let i=0; reservasData.length >= i; i++){
+        if(reservasData[i] && (reservasData[i] as Reserva).keyEmpresa === this.claveEmpresa){
+          this.reservas[j] = reservasData[i];
+          j++;
+        }
+      }
+    });
   }
-
 }

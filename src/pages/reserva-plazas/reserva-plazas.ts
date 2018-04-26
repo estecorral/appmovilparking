@@ -4,6 +4,7 @@ import {AngularFireDatabase} from "angularfire2/database";
 import {AuthUserProvider} from "../../providers/auth-user/auth-user";
 import {Reserva} from "../../models/reserva";
 import {Empresa} from "../../models/empresa";
+import {HomePage} from "../home/home";
 
 /**
  * Generated class for the ReservaPlazasPage page.
@@ -22,16 +23,14 @@ export class ReservaPlazasPage {
   parking: any;
   userEntrepriseData: any;
   empresa: any;
-  clave: string;
   claveEmpresa: string;
-  empresasData=  {} as Empresa;
+  telefono: string;
   reserva= {} as Reserva;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private userAuth: AuthUserProvider,
              private afDatabase: AngularFireDatabase ) {
 
     this.parking = this.navParams.get('parking');
-    console.log(this.parking);
     this.userAuth.verificaUsuario().subscribe(data => {
       if (!data){
         return;
@@ -44,24 +43,23 @@ export class ReservaPlazasPage {
         });
     });
     this.afDatabase.list('entreprises').valueChanges().subscribe( empresasData => {
+      if(!empresasData){
+        return;
+      }
       for(let i=0; empresasData.length >= i; i++){
-       // this.empresasData = empresasData;
-        if(empresasData[i].key === this.claveEmpresa){
-          // this.claveEmpresa = this.empresasData[i].key;
-          this.empresa = this.empresasData[i];
-          console.log(this.empresa);
-         // this.guardarEmpresa(this.empresasData[i]);
+        if(empresasData[i] && (empresasData[i] as Empresa).key === this.claveEmpresa){
+          this.empresa = empresasData[i];
         }
       }
     });
   }
-  /*guardarEmpresa(empresa: any){
-    this.empresa = empresa;
-  }*/
 
   reservar(){
       this.reserva.keyEmpresa = this.claveEmpresa;
       this.reserva.keyParking = this.parking.key;
+      this.reserva.nombreParking = this.parking.name;
+      this.reserva.estado = 'pendiente';
       this.afDatabase.list('reserva').push(this.reserva);
+      this.navCtrl.setRoot(HomePage);
     }
 }

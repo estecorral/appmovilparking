@@ -7,7 +7,7 @@ import { MyApp } from './app.component';
 import {HttpClientModule} from "@angular/common/http";
 // Firebase
 import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireDatabaseModule} from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { firebaseConfig } from "../config/firebase.config";
 
@@ -15,25 +15,22 @@ import { firebaseConfig } from "../config/firebase.config";
 import { UserParkingProvider } from '../providers/user-parking/user-parking';
 import { UserEntrepriseProvider } from '../providers/user-entreprise/user-entreprise';
 import { ParkingsProvider } from '../providers/parkings/parkings';
-
+import { AuthUserProvider } from '../providers/auth-user/auth-user';
 //pages
-import {HomePage} from "../pages/home/home";
-import {LoginPage} from "../pages/login/login";
-import {RegistEntreprisePage} from "../pages/regist-entreprise/regist-entreprise";
-import {RegistEntreprise2Page} from "../pages/regist-entreprise2/regist-entreprise2";
-import {RegistParkingPage} from "../pages/regist-parking/regist-parking";
-import {RegistParking2Page} from "../pages/regist-parking2/regist-parking2";
 import {ParkingListPage} from "../pages/parking-list/parking-list";
 import {DetalleParkingPage} from "../pages/detalle-parking/detalle-parking";
 import {ReservaPlazasPage} from "../pages/reserva-plazas/reserva-plazas";
-import { AuthUserProvider } from '../providers/auth-user/auth-user';
+import {MyReservationsPage} from "../pages/my-reservations/my-reservations";
+import {MyContractsPage} from "../pages/my-contracts/my-contracts";
 
 @NgModule({
   declarations: [
     MyApp,
     ParkingListPage,
     DetalleParkingPage,
-    ReservaPlazasPage
+    ReservaPlazasPage,
+    MyReservationsPage,
+    MyContractsPage
   ],
   imports: [
     BrowserModule,
@@ -48,7 +45,9 @@ import { AuthUserProvider } from '../providers/auth-user/auth-user';
     MyApp,
     ParkingListPage,
     DetalleParkingPage,
-    ReservaPlazasPage
+    ReservaPlazasPage,
+    MyReservationsPage,
+    MyContractsPage
   ],
   providers: [
     StatusBar,

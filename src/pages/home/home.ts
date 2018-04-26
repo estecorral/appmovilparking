@@ -5,6 +5,8 @@ import {AngularFireDatabase} from "angularfire2/database";
 import {LoginPage} from "../login/login";
 import {ParkingListPage} from "../parking-list/parking-list";
 import {AuthUserProvider} from "../../providers/auth-user/auth-user";
+import {MyReservationsPage} from "../my-reservations/my-reservations";
+import {MyContractsPage} from "../my-contracts/my-contracts";
 
 /**
  * Generated class for the HomePage page.
@@ -65,5 +67,13 @@ export class HomePage {
 
   buscarParking(nombreEmpresa: string){
     this.navCtrl.push(ParkingListPage);
+  }
+
+  misReservas(nombreEmpresa: string){
+    this.navCtrl.push(MyReservationsPage);
+  }
+
+  misContratos(){
+    this.navCtrl.push(MyContractsPage);
   }
 }
