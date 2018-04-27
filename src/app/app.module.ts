@@ -22,6 +22,7 @@ import {DetalleParkingPage} from "../pages/detalle-parking/detalle-parking";
 import {ReservaPlazasPage} from "../pages/reserva-plazas/reserva-plazas";
 import {MyReservationsPage} from "../pages/my-reservations/my-reservations";
 import {MyContractsPage} from "../pages/my-contracts/my-contracts";
+import {ListEntreprisesPage} from "../pages/list-entreprises/list-entreprises";
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {MyContractsPage} from "../pages/my-contracts/my-contracts";
     DetalleParkingPage,
     ReservaPlazasPage,
     MyReservationsPage,
-    MyContractsPage
+    MyContractsPage,
+    ListEntreprisesPage
   ],
   imports: [
     BrowserModule,
@@ -47,7 +49,8 @@ import {MyContractsPage} from "../pages/my-contracts/my-contracts";
     DetalleParkingPage,
     ReservaPlazasPage,
     MyReservationsPage,
-    MyContractsPage
+    MyContractsPage,
+    ListEntreprisesPage
   ],
   providers: [
     StatusBar,

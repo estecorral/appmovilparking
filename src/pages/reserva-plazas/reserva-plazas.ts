@@ -58,6 +58,7 @@ export class ReservaPlazasPage {
       this.reserva.keyEmpresa = this.claveEmpresa;
       this.reserva.keyParking = this.parking.key;
       this.reserva.nombreParking = this.parking.name;
+      this.reserva.nombreEmpresa = this.empresa.nombre;
       this.reserva.estado = 'pendiente';
       this.afDatabase.list('reserva').push(this.reserva);
       this.navCtrl.setRoot(HomePage);

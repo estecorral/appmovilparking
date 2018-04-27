@@ -31,7 +31,7 @@
       </ion-avatar>
       <h3>{{ userParkingData.name }}</h3>
     </ion-item>
-      <button ion-item>
+      <button ion-item (click)="empresasParking(userParkingData)">
       <ion-icon name="md-briefcase"></ion-icon>
       Empresas de transporte
     </button>
@@ -47,10 +47,12 @@
       <ion-icon name="md-grid"></ion-icon>
       Plazas
     </button>
+    <a href="mailto:ecorralg@uoc.edu?Subject=Sugerencia Aplicación parking">
     <button ion-item>
       <ion-icon name="md-mail"></ion-icon>
       Contacto / Sugerencias
     </button>
+    </a>
     <button ion-item (click)="logOut()">
       <ion-icon md="md-log-out"></ion-icon>
       LogOut
@@ -76,10 +78,12 @@
       <ion-icon name="md-done-all"></ion-icon>
       Mis Reservas
     </button>
-    <button ion-item>
+    <a href="mailto:ecorralg@uoc.edu?Subject=Sugerencia Aplicación parking">
+    <button ion-item >
       <ion-icon name="md-mail"></ion-icon>
-      Contacto / Sugerencias
+     Contacto / Sugerencias
     </button>
+    </a>
     <button ion-item (click)="logOut()">
       <ion-icon md="md-log-out"></ion-icon>
       LogOut

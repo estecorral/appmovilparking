@@ -7,6 +7,7 @@ import {ParkingListPage} from "../parking-list/parking-list";
 import {AuthUserProvider} from "../../providers/auth-user/auth-user";
 import {MyReservationsPage} from "../my-reservations/my-reservations";
 import {MyContractsPage} from "../my-contracts/my-contracts";
+import {ListEntreprisesPage} from "../list-entreprises/list-entreprises";
 
 /**
  * Generated class for the HomePage page.
@@ -47,33 +48,28 @@ export class HomePage {
           this.userEntrepriseData = userData;
         });
     });
-   /* this.userAuth.authState.subscribe(data => {
-     this.afDatabase.object(`userParking/${data.uid}`).valueChanges()
-        .subscribe( userData => {
-          this.userParkingData = userData;
-        });
-      this.afDatabase.object(`userEntreprise/${data.uid}`).valueChanges()
-        .subscribe( userData => {
-          this.userEntrepriseData = userData;
-        });
-    });*/
   }
 
+  // Función para salir de la aplicación:
   logOut(){
     this.authUser.logOut();
     // this.userAuth.auth.signOut();
     this.navCtrl.setRoot(LoginPage);
   }
-
+  // Función que navega a la pagina de búsqueda de camiones
   buscarParking(nombreEmpresa: string){
     this.navCtrl.push(ParkingListPage);
   }
-
+  // Funciín para navegar a la pagina de mis reservas como empresa
   misReservas(nombreEmpresa: string){
     this.navCtrl.push(MyReservationsPage);
   }
-
+  // Función para navegar a la pagina de contratos que tiene una empresa con los parkings
   misContratos(){
     this.navCtrl.push(MyContractsPage);
+  }
+  // Función que navega al listado de empresas que tienen reservas en un parking
+  empresasParking(parking: any){
+    this.navCtrl.push(ListEntreprisesPage, {parking});
   }
 }
