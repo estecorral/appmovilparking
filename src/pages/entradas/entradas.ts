@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {AngularFireDatabase} from "angularfire2/database";
 
 /**
  * Generated class for the EntradasPage page.
@@ -15,7 +16,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class EntradasPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  parking: any;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private afDatabase: AngularFireDatabase) {
+    this.parking = this.navParams.get('parking');
+    this.afDatabase.list
   }
 
   ionViewDidLoad() {

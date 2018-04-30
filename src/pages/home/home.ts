@@ -8,6 +8,7 @@ import {AuthUserProvider} from "../../providers/auth-user/auth-user";
 import {MyReservationsPage} from "../my-reservations/my-reservations";
 import {MyContractsPage} from "../my-contracts/my-contracts";
 import {ListEntreprisesPage} from "../list-entreprises/list-entreprises";
+import {EntradasPage} from "../entradas/entradas";
 
 /**
  * Generated class for the HomePage page.
@@ -71,5 +72,8 @@ export class HomePage {
   // Función que navega al listado de empresas que tienen reservas en un parking
   empresasParking(parking: any){
     this.navCtrl.push(ListEntreprisesPage, {parking});
+  }
+  entradas(parking: any){
+    this.navCtrl.push(EntradasPage, {parking});
   }
 }

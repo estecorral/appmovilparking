@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {AngularFireDatabase} from "angularfire2/database";
+import {AngularFireAction, AngularFireDatabase, AngularFireList, AngularFireObject} from "angularfire2/database";
 import {Reserva} from "../../models/reserva";
 import {AuthUserProvider} from "../../providers/auth-user/auth-user";
+import {GestionContratoPage} from "../gestion-contrato/gestion-contrato";
+import {Observable} from "rxjs/Observable";
 
 /**
  * Generated class for the ListEntreprisesPage page.
@@ -18,11 +20,12 @@ import {AuthUserProvider} from "../../providers/auth-user/auth-user";
 })
 export class ListEntreprisesPage {
   parking: any;
-  reservas= [];
   claveParking: string;
+  misReservas = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private afDatabase: AngularFireDatabase,
               private userAuth: AuthUserProvider) {
+
     this.userAuth.verificaUsuario().subscribe(data => {
       if (!data){
         return;
@@ -33,21 +36,17 @@ export class ListEntreprisesPage {
           this.claveParking = data.uid;
         });
     });
-
-  }
-
-  ionViewDidLoad() {
-    this.afDatabase.list('reserva').valueChanges().subscribe( reservasData => {
-      if(!reservasData){
-        return;
-      }
-      let j = 0;
-      for(let i=0; reservasData.length >= i; i++) {
-        if(reservasData[i] && (reservasData[i] as Reserva).keyParking === this.claveParking){
-          this.reservas[j] = reservasData[i];
-          j++;
+    afDatabase.list('reserva').snapshotChanges().subscribe( actions => {
+      let i = 0;
+      actions.forEach(action => {
+        // console.log(action.key);
+        if (this.claveParking === action.payload.val().keyParking) {
+          this.misReservas[i] = action.payload.val();
+          this.misReservas[i].key = action.key;
+          i++;
         }
-      }
+        // console.log(this.misReservas);
+      })
     });
   }
   estadoReserva(reservaEstado: string){
@@ -56,5 +55,10 @@ export class ListEntreprisesPage {
     } else {
       return false;
     }
+  }
+
+  goGestionContrato(key: string){
+    console.log(key);
+   this.navCtrl.push(GestionContratoPage, {key});
   }
 }
