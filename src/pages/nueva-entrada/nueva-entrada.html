@@ -1,0 +1,55 @@
+<!--
+  Generated template for the NuevaEntradaPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header class="navColor">
+
+  <ion-navbar color="primary">
+    <ion-title>
+      Nueva Entrada
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label color="primary">Empresa</ion-label>
+      <ion-select type="text" [(ngModel)]="entrada.nombreEmpresaTransporte">
+        <ion-option *ngFor="let empresa of reservas" [value]="empresa.nombreEmpresa">{{empresa.nombreEmpresa}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+        <ion-label color="primary">Matricula camión</ion-label>
+        <ion-textarea type="text" [(ngModel)]="entrada.matriculaCamion"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary">Matricula semiremolque</ion-label>
+      <ion-textarea type="text" [(ngModel)]="entrada.matriculaSemiremolque"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary">Transportista</ion-label>
+      <ion-textarea type="text" [(ngModel)]="entrada.nombreTransportista"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary">DNI</ion-label>
+      <ion-textarea type="text" [(ngModel)]="entrada.dniTranportista"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary">Fecha de entrada</ion-label>
+      <ion-datetime displayFormat="DD/MMM/YYYY, HH:mm" [(ngModel)]="entrada.fechaEntrada"></ion-datetime>
+    </ion-item>
+  </ion-list>
+  <ion-item>
+    <ion-label color="primary">Plaza</ion-label>
+    <ion-textarea type="text" [(ngModel)]="entrada.plaza"></ion-textarea>
+  </ion-item>
+  <div class="reservaButton">
+    <div class="row">
+      <button ion-button block color="primary" (click)="nuevaEntrada()"><ion-icon md="md-bookmarks"></ion-icon>Registrar nueva entrada</button>
+    </div>
+  </div>
+</ion-content>

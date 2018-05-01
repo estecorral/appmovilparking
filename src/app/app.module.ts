@@ -26,6 +26,7 @@ import {ListEntreprisesPage} from "../pages/list-entreprises/list-entreprises";
 import {GestionContratoPage} from "../pages/gestion-contrato/gestion-contrato";
 import {EntradasPage} from "../pages/entradas/entradas";
 import {SalidasPage} from "../pages/salidas/salidas";
+import {NuevaEntradaPage} from "../pages/nueva-entrada/nueva-entrada";
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import {SalidasPage} from "../pages/salidas/salidas";
     ListEntreprisesPage,
     GestionContratoPage,
     EntradasPage,
-    SalidasPage
+    SalidasPage,
+    NuevaEntradaPage
   ],
   imports: [
     BrowserModule,
@@ -59,7 +61,8 @@ import {SalidasPage} from "../pages/salidas/salidas";
     ListEntreprisesPage,
     GestionContratoPage,
     EntradasPage,
-    SalidasPage
+    SalidasPage,
+    NuevaEntradaPage
   ],
   providers: [
     StatusBar,

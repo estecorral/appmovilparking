@@ -16,5 +16,15 @@
 
 
 <ion-content padding>
-
+  <ion-fab top right edge #fab1>
+    <button ion-fab mini (click)="addEntrada(keyParking)" color="secondary"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+  <ion-list>
+    <button ion-item *ngFor="let movimiento of movimientos">
+      <ion-icon md="md-arrow-round-forward" color="secondary"></ion-icon>
+      <h2>{{movimiento.matriculaCamion}}</h2>
+      <h3>{{movimiento.nombreEmpresaTransporte}}</h3>
+      <p>Entrada: {{movimiento.fechaEntrada}}</p>
+    </button>
+  </ion-list>
 </ion-content>

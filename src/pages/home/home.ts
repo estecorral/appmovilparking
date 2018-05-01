@@ -73,7 +73,7 @@ export class HomePage {
   empresasParking(parking: any){
     this.navCtrl.push(ListEntreprisesPage, {parking});
   }
-  entradas(parking: any){
-    this.navCtrl.push(EntradasPage, {parking});
+  entradas(){
+    this.navCtrl.push(EntradasPage, {});
   }
 }
