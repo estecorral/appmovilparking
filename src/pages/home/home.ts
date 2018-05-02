@@ -9,6 +9,7 @@ import {MyReservationsPage} from "../my-reservations/my-reservations";
 import {MyContractsPage} from "../my-contracts/my-contracts";
 import {ListEntreprisesPage} from "../list-entreprises/list-entreprises";
 import {EntradasPage} from "../entradas/entradas";
+import {SalidasPage} from "../salidas/salidas";
 
 /**
  * Generated class for the HomePage page.
@@ -73,7 +74,12 @@ export class HomePage {
   empresasParking(parking: any){
     this.navCtrl.push(ListEntreprisesPage, {parking});
   }
+  // Función que navega al listado de entradas de vehículos que tiene un parking
   entradas(){
-    this.navCtrl.push(EntradasPage, {});
+    this.navCtrl.push(EntradasPage);
+  }
+  // Función que navega al listado de salidas de vehículos que tiene un parking
+  salidas(){
+    this.navCtrl.push(SalidasPage)
   }
 }

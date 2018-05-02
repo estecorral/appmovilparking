@@ -39,7 +39,7 @@ export class EntradasPage {
         return;
       }
       for(let i = 0; data.length >= i; i++){
-        if(data[i] && (data[i] as Movimiento).keyParking === this.keyParking && !(data[i] as Movimiento).fechaSalida) {
+        if(data[i] && (data[i] as Movimiento).keyParking === this.keyParking && (data[i] as Movimiento).tipo === 'in') {
           this.movimientos.push(data[i]);
         }
       }

@@ -1,0 +1,75 @@
+<!--
+  Generated template for the NuevaSalidaPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header class="navColor">
+
+  <ion-navbar color="primary">
+    <ion-title>
+      Nueva Salida
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+  <ion-item>
+     <ion-label color="primary">Matricula Camión</ion-label>
+     <ion-select type="text" [(ngModel)]="salida">
+       <ion-option *ngFor="let movimiento of movimientos" [value]="movimiento" (ionSelect)="mostrarDatosMovimiento(movimiento)">{{movimiento.matriculaCamion}}</ion-option>
+     </ion-select>
+  </ion-item>
+  </ion-list>
+    <ion-list *ngIf="movimientoSalida">
+      <ion-item>
+        <ion-label color="primary">Empresa</ion-label>
+        <ion-note item-end>
+          {{movimientoSalida.nombreEmpresaTransporte}}
+        </ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary">Plaza</ion-label>
+        <ion-note item-end>
+          {{movimientoSalida.plaza}}
+        </ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary">Matricula semiremolque</ion-label>
+        <ion-note item-end>
+          {{movimientoSalida.matriculaSemiremolque}}
+        </ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary">Fecha de entrada</ion-label>
+        <ion-note item-end>
+          {{movimientoSalida.fechaEntrada}}
+        </ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary">Fecha de salida</ion-label>
+        <ion-datetime displayFormat="DD/MMM/YYYY, HH:mm" [(ngModel)]="salida.fechaSalida"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary">Matricula semiremolque</ion-label>
+        <ion-textarea type="text" [(ngModel)]="salida.matriculaSemiremolqueSalida"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary">Transportista</ion-label>
+        <ion-textarea type="text" [(ngModel)]="salida.nombreTransportistaSalida"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary">DNI</ion-label>
+        <ion-textarea type="text" [(ngModel)]="salida.dniTranportistaSalida"></ion-textarea>
+      </ion-item>
+  </ion-list>
+  <div class="reservaButton" *ngIf="movimientoSalida">
+    <div class="row">
+      <button ion-button block color="primary" (click)="nuevaSalida()"><ion-icon md="md-bookmarks">
+      </ion-icon>Registrar nueva salida</button>
+    </div>
+  </div>
+</ion-content>

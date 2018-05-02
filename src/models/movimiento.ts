@@ -4,9 +4,13 @@ export interface Movimiento{
   nombreEmpresaTransporte: string;
   matriculaCamion: string;
   matriculaSemiremolque?:string;
+  matriculaSemiremolqueSalida?:string;
   nombreTransportista: string;
   dniTranportista: string;
+  nombreTransportistaSalida: string;
+  dniTranportistaSalida: string;
   fechaEntrada: Date;
   fechaSalida: Date;
   plaza: string;
+  tipo: string;
 }

@@ -27,6 +27,7 @@ import {GestionContratoPage} from "../pages/gestion-contrato/gestion-contrato";
 import {EntradasPage} from "../pages/entradas/entradas";
 import {SalidasPage} from "../pages/salidas/salidas";
 import {NuevaEntradaPage} from "../pages/nueva-entrada/nueva-entrada";
+import {NuevaSalidaPage} from "../pages/nueva-salida/nueva-salida";
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {NuevaEntradaPage} from "../pages/nueva-entrada/nueva-entrada";
     GestionContratoPage,
     EntradasPage,
     SalidasPage,
-    NuevaEntradaPage
+    NuevaEntradaPage,
+    NuevaSalidaPage
   ],
   imports: [
     BrowserModule,
@@ -62,7 +64,8 @@ import {NuevaEntradaPage} from "../pages/nueva-entrada/nueva-entrada";
     GestionContratoPage,
     EntradasPage,
     SalidasPage,
-    NuevaEntradaPage
+    NuevaEntradaPage,
+    NuevaSalidaPage
   ],
   providers: [
     StatusBar,

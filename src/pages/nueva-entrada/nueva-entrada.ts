@@ -46,6 +46,7 @@ export class NuevaEntradaPage {
   nuevaEntrada(){
     this.entrada.keyEmpresa = this.keyEmpresa;
     this.entrada.keyParking = this.keyParking;
+    this.entrada.tipo = 'in';
     console.log(this.entrada);
     this.afDatabase.list('entradas').push(this.entrada);
     this.navCtrl.push(EntradasPage);
