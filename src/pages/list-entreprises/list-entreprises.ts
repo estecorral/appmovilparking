@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {AngularFireAction, AngularFireDatabase, AngularFireList, AngularFireObject} from "angularfire2/database";
-import {Reserva} from "../../models/reserva";
+import {AngularFireDatabase} from "angularfire2/database";
 import {AuthUserProvider} from "../../providers/auth-user/auth-user";
 import {GestionContratoPage} from "../gestion-contrato/gestion-contrato";
-import {Observable} from "rxjs/Observable";
+import {MovimientosEmpresaParkingPage} from "../movimientos-empresa-parking/movimientos-empresa-parking";
 
 /**
  * Generated class for the ListEntreprisesPage page.
@@ -36,17 +35,19 @@ export class ListEntreprisesPage {
           this.claveParking = data.uid;
         });
     });
-    afDatabase.list('reserva').snapshotChanges().subscribe( actions => {
+  }
+  ionViewDidLoad() {
+    this.afDatabase.list('reserva').snapshotChanges().subscribe( actions => {
       let i = 0;
       actions.forEach(action => {
-        // console.log(action.key);
+        console.log(this.claveParking);
         if (this.claveParking === action.payload.val().keyParking) {
           this.misReservas[i] = action.payload.val();
           this.misReservas[i].key = action.key;
           i++;
         }
-        // console.log(this.misReservas);
-      })
+        console.log(this.misReservas);
+      });
     });
   }
   estadoReserva(reservaEstado: string){
@@ -60,5 +61,8 @@ export class ListEntreprisesPage {
   goGestionContrato(key: string){
     console.log(key);
    this.navCtrl.push(GestionContratoPage, {key});
+  }
+  goMovimientos(reserva: any){
+    this.navCtrl.push(MovimientosEmpresaParkingPage, {reserva});
   }
 }

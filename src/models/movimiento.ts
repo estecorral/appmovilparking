@@ -10,7 +10,9 @@ export interface Movimiento{
   nombreTransportistaSalida: string;
   dniTranportistaSalida: string;
   fechaEntrada: Date;
+  horaEntrada: Date;
   fechaSalida: Date;
+  horaSalida: Date;
   plaza: string;
   tipo: string;
 }

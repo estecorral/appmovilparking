@@ -31,7 +31,7 @@ export class NuevaEntradaPage {
         // console.log(action.key);
         if (this.keyParking === action.payload.val().keyParking && action.payload.val().estado === 'confirmada') {
           this.reservas[i] = action.payload.val();
-          this.keyEmpresa = action.payload.val().keyEmpresa;
+          // this.keyEmpresa = action.payload.val().keyEmpresa;
           i++;
         }
         // console.log(this.reservas);
@@ -42,7 +42,9 @@ export class NuevaEntradaPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad NuevaEntradaPage');
   }
-
+  saveKeyEmpresa(key){
+    this.keyEmpresa = key;
+  }
   nuevaEntrada(){
     this.entrada.keyEmpresa = this.keyEmpresa;
     this.entrada.keyParking = this.keyParking;

@@ -19,7 +19,7 @@
     <ion-item>
       <ion-label color="primary">Empresa</ion-label>
       <ion-select type="text" [(ngModel)]="entrada.nombreEmpresaTransporte">
-        <ion-option *ngFor="let empresa of reservas" [value]="empresa.nombreEmpresa">{{empresa.nombreEmpresa}}</ion-option>
+        <ion-option *ngFor="let empresa of reservas" [value]="empresa.nombreEmpresa" (ionSelect)="saveKeyEmpresa(empresa.keyEmpresa)">{{empresa.nombreEmpresa}}</ion-option>
       </ion-select>
     </ion-item>
     <ion-item>
@@ -40,7 +40,11 @@
     </ion-item>
     <ion-item>
       <ion-label color="primary">Fecha de entrada</ion-label>
-      <ion-datetime displayFormat="DD/MMM/YYYY, HH:mm" [(ngModel)]="entrada.fechaEntrada"></ion-datetime>
+      <ion-datetime displayFormat="DD/MMM/YYYY" [(ngModel)]="entrada.fechaEntrada"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary">Hora de entrada</ion-label>
+      <ion-datetime displayFormat="HH:mm" [(ngModel)]="entrada.horaEntrada"></ion-datetime>
     </ion-item>
   </ion-list>
   <ion-item>

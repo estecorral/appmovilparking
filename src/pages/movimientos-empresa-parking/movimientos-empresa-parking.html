@@ -1,0 +1,33 @@
+<!--
+  Generated template for the MovimientosEmpresaParkingPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header class="navColor">
+
+  <ion-navbar color="primary">
+    <ion-title>
+      Movimientos Empresa
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-list *ngIf="reservaConfirmada()">
+    <ion-list-header>{{reserva.nombreEmpresa}}</ion-list-header>
+    <ion-item *ngFor="let movimiento of movimientos">
+      <ion-icon md="md-arrow-round-forward" color="danger" *ngIf="movimiento.fechaSalida"></ion-icon>
+      <ion-icon md="md-arrow-round-forward" color="secondary" *ngIf="!movimiento.fechaSalida"></ion-icon>
+      <h2>{{movimiento.matriculaCamion}}</h2>
+      <p>Entrada: {{movimiento.fechaEntrada}} {{movimiento.horaEntrada}}</p>
+      <p *ngIf="movimiento.fechaSalida">Salida: {{movimiento.fechaSalida}} {{movimiento.horaSalida}}</p>
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-item *ngIf="!reservaConfirmada()">
+      Reserva pendiente, no hay movimientos
+    </ion-item>
+  </ion-list>
+</ion-content>

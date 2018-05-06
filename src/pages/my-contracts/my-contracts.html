@@ -16,5 +16,15 @@
 
 
 <ion-content padding>
-
+  <ion-list>
+    <button ion-item  *ngFor="let reserva of reservas">
+      <ion-avatar item-start class="avatar-circle">
+        <p class="initials">{{reserva.nombreParking | slice:0:1 }}</p>
+      </ion-avatar>
+      <h2>{{reserva.nombreParking}}</h2>
+      <h3>Fecha inicio contrato: {{reserva.fechaInicio}}</h3>
+      <h3>Fecha fin contrato: {{reserva.fechaFin}}</h3>
+      <p>Plazas reservadas: {{reserva.plazas}}</p>
+    </button>
+  </ion-list>
 </ion-content>

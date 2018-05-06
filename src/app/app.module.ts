@@ -28,6 +28,11 @@ import {EntradasPage} from "../pages/entradas/entradas";
 import {SalidasPage} from "../pages/salidas/salidas";
 import {NuevaEntradaPage} from "../pages/nueva-entrada/nueva-entrada";
 import {NuevaSalidaPage} from "../pages/nueva-salida/nueva-salida";
+import {PlazasPage} from "../pages/plazas/plazas";
+import {AddPlazasPage} from "../pages/add-plazas/add-plazas";
+import {MovimientosEmpresaPage} from "../pages/movimientos-empresa/movimientos-empresa";
+import {DetalleMovimientoPage} from "../pages/detalle-movimiento/detalle-movimiento";
+import {MovimientosEmpresaParkingPage} from "../pages/movimientos-empresa-parking/movimientos-empresa-parking";
 
 @NgModule({
   declarations: [
@@ -42,7 +47,12 @@ import {NuevaSalidaPage} from "../pages/nueva-salida/nueva-salida";
     EntradasPage,
     SalidasPage,
     NuevaEntradaPage,
-    NuevaSalidaPage
+    NuevaSalidaPage,
+    PlazasPage,
+    AddPlazasPage,
+    MovimientosEmpresaPage,
+    DetalleMovimientoPage,
+    MovimientosEmpresaParkingPage
   ],
   imports: [
     BrowserModule,
@@ -65,7 +75,12 @@ import {NuevaSalidaPage} from "../pages/nueva-salida/nueva-salida";
     EntradasPage,
     SalidasPage,
     NuevaEntradaPage,
-    NuevaSalidaPage
+    NuevaSalidaPage,
+    PlazasPage,
+    AddPlazasPage,
+    MovimientosEmpresaPage,
+    DetalleMovimientoPage,
+    MovimientosEmpresaParkingPage
   ],
   providers: [
     StatusBar,

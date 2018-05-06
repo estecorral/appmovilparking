@@ -16,7 +16,7 @@
 
 <ion-content>
   <ion-list>
-    <button ion-item  *ngFor="let reserva of reservas">
+    <button ion-item  *ngFor="let reserva of reservas" (click)="reservaMovimientos(reserva)">
       <ion-avatar item-start class="avatar-circle">
         <p class="initials">{{reserva.nombreParking | slice:0:1 }}</p>
       </ion-avatar>

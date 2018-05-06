@@ -50,8 +50,18 @@
         </ion-note>
       </ion-item>
       <ion-item>
+        <ion-label color="primary">Hora de entrada</ion-label>
+        <ion-note item-end>
+          {{movimientoSalida.horaEntrada}}
+        </ion-note>
+      </ion-item>
+      <ion-item>
         <ion-label color="primary">Fecha de salida</ion-label>
-        <ion-datetime displayFormat="DD/MMM/YYYY, HH:mm" [(ngModel)]="salida.fechaSalida"></ion-datetime>
+        <ion-datetime displayFormat="DD/MMM/YYYY" [(ngModel)]="salida.fechaSalida"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary">Hora de salida</ion-label>
+        <ion-datetime displayFormat="HH:mm" [(ngModel)]="salida.horaSalida"></ion-datetime>
       </ion-item>
       <ion-item>
         <ion-label color="primary">Matricula semiremolque</ion-label>

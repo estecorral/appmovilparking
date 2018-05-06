@@ -10,6 +10,7 @@ import {MyContractsPage} from "../my-contracts/my-contracts";
 import {ListEntreprisesPage} from "../list-entreprises/list-entreprises";
 import {EntradasPage} from "../entradas/entradas";
 import {SalidasPage} from "../salidas/salidas";
+import {PlazasPage} from "../plazas/plazas";
 
 /**
  * Generated class for the HomePage page.
@@ -81,5 +82,9 @@ export class HomePage {
   // Función que navega al listado de salidas de vehículos que tiene un parking
   salidas(){
     this.navCtrl.push(SalidasPage)
+  }
+  // Función que navega al listado de plazas de las que dispone el parking
+  plazas(){
+    this.navCtrl.push(PlazasPage);
   }
 }

@@ -43,7 +43,6 @@ export class EntradasPage {
           this.movimientos.push(data[i]);
         }
       }
-      console.log(this.movimientos);
     });
   }
 

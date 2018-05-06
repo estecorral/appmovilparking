@@ -1,0 +1,36 @@
+<!--
+  Generated template for the DetalleMovimientoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header class="navColor">
+
+  <ion-navbar color="primary">
+    <ion-title>
+      Detalle Movimiento
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-list-header>{{movimiento.matriculaCamion}}</ion-list-header>
+    <ion-item>
+      <b>Entrada: </b> {{movimiento.fechaEntrada}}
+      <p>- {{movimiento.nombreTransportista}} {{movimiento.dniTranportista}}</p>
+      <p>- {{movimiento.matriculaSemiremolque}}</p>
+    </ion-item>
+    <ion-item *ngIf="movimiento.fechaSalida">
+      <b>Salida: </b> {{movimiento.fechaSalida}}
+      <p>- {{movimiento.nombreTransportistaSalida}} {{movimiento.dniTranportistaSalida}}</p>
+      <p>- {{movimiento.matriculaSemiremolqueSalida}}</p>
+    </ion-item>
+    <ion-item *ngIf="!movimiento.fechaSalida">
+      <b>Salida: </b>
+      <p>El camión se encuentra actualmente en el parking</p>
+    </ion-item>
+  </ion-list>
+</ion-content>

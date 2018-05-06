@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {AngularFireDatabase} from "angularfire2/database";
 import {Reserva} from "../../models/reserva";
 import {AuthUserProvider} from "../../providers/auth-user/auth-user";
+import {MovimientosEmpresaPage} from "../movimientos-empresa/movimientos-empresa";
 
 /**
  * Generated class for the MyReservationsPage page.
@@ -44,11 +45,14 @@ export class MyReservationsPage {
       }
       let j = 0;
       for(let i=0; reservasData.length >= i; i++){
-        if(reservasData[i] && (reservasData[i] as Reserva).keyEmpresa === this.claveEmpresa){
+        if(reservasData[i] && (reservasData[i] as Reserva).keyEmpresa === this.claveEmpresa) {
           this.reservas[j] = reservasData[i];
           j++;
         }
       }
     });
+  }
+  reservaMovimientos(reserva: any){
+    this.navCtrl.push(MovimientosEmpresaPage, {reserva});
   }
 }
