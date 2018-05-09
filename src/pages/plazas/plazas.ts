@@ -33,7 +33,6 @@ export class PlazasPage {
       data.forEach(parking => {
         if (this.keyParking === (parking as Parking).key){
            this.parking = parking;
-           console.log(this.parking);
            return;
         }
       });
@@ -41,13 +40,8 @@ export class PlazasPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad PlazasPage');
     this.afDatabase.list('parkings').valueChanges().subscribe(data => {
       console.log(data);
     })
-  }
-
-  addPlazas(){
-    this.navCtrl.push(AddPlazasPage);
   }
 }

@@ -21,4 +21,8 @@ export class AuthUserProvider {
   logOut(){
     this.auth.auth.signOut();
   }
+
+  async recuperaPass(email: any){
+    return await this.auth.auth.sendPasswordResetEmail(email);
+  }
 }
