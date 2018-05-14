@@ -14,21 +14,18 @@
 
 <ion-content padding class="background">
   <ion-card>
-    <img src="../../assets/imgs/login_inicial.jpg">
-
+    <img src="assets/imgs/login_inicial.jpg">
     <ion-list inset>
       <ion-item>
-        <ion-label floating>Email</ion-label>
-        <ion-input type="email" [(ngModel)]="user.email" name="email"></ion-input>
+        <ion-input type="email" [(ngModel)]="user.email" name="email" placeholder="Email"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label floating>Password</ion-label>
-        <ion-input type="password" [(ngModel)]="user.password" name="password"></ion-input>
+        <ion-input type="password" [(ngModel)]="user.password" name="password" placeholder="Password"></ion-input>
       </ion-item>
-      <br/>
+      <br>
       <button ion-button block color="light" (click)="login(user)"><ion-icon md="md-log-in"></ion-icon> Login</button>
-      <br/>
-      <a>EN CASO DE NO DISPONER DE UNA CUENTA:</a>
+      <br>
+      <a>En caso de no disponer de cuenta:</a>
       <button ion-button block (click)="registNewParking()">Registrar nuevo parking</button>
       <button ion-button block (click)="registNewEntreprise()">Registrar nueva empresa</button>
       <a (click)="recuperarPass()">Recuperar contraseña</a>

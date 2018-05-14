@@ -4,6 +4,7 @@ import {AngularFireDatabase} from "angularfire2/database";
 import {AlertController} from "ionic-angular";
 import {Reserva} from "../../models/reserva";
 import {Empresa} from "../../models/empresa";
+import {containerStart} from "@angular/core/src/render3/instructions";
 
 /**
  * Generated class for the GestionContratoPage page.
@@ -25,6 +26,7 @@ export class GestionContratoPage {
   empresa: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, private afDatabase: AngularFireDatabase,
               public alertCtrl: AlertController) {
+    this.reservaKey = this.navParams.get('key');
     this.afDatabase.list('entreprises').valueChanges().subscribe( empresasData => {
       if(!empresasData){
         return;
@@ -38,10 +40,12 @@ export class GestionContratoPage {
     });
   }
   ionViewDidLoad(){
-    this.reservaKey = this.navParams.get('key');
     this.afDatabase.list('reserva').snapshotChanges().subscribe( actions =>
       actions.forEach(action => {
-        if(!action.payload.val()) return;
+        if(!action.payload.val()){
+          console.log('No definido');
+          return;
+        }
         if(this.reservaKey === action.key){
           this.reserva = action.payload.val();
           this.keyEmpresa = action.payload.val().keyEmpresa;
