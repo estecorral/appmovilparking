@@ -7,10 +7,9 @@ import {Empresa} from "../../models/empresa";
 import {HomePage} from "../home/home";
 
 /**
- * Generated class for the ReservaPlazasPage page.
+ * Página para la reserva de plazas
  *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
+ *  Permite la reserva de plazas de una empresa en un determinado parking
  */
 
 @IonicPage()
@@ -29,8 +28,9 @@ export class ReservaPlazasPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private userAuth: AuthUserProvider,
              private afDatabase: AngularFireDatabase ) {
-
+    // recoge la información del parking de la página anterior
     this.parking = this.navParams.get('parking');
+    // Recupera la información del usuario autenticado
     this.userAuth.verificaUsuario().subscribe(data => {
       if (!data){
         return;
@@ -42,6 +42,7 @@ export class ReservaPlazasPage {
           console.log(this.userEntrepriseData);
         });
     });
+    // Recupera la información de la empresa que realiza la reserva
     this.afDatabase.list('entreprises').valueChanges().subscribe( empresasData => {
       if(!empresasData){
         return;
@@ -53,7 +54,7 @@ export class ReservaPlazasPage {
       }
     });
   }
-
+// Guarda en base de datos la solicitud de reserva de plazas
   reservar(){
       this.reserva.keyEmpresa = this.claveEmpresa;
       this.reserva.keyParking = this.parking.key;

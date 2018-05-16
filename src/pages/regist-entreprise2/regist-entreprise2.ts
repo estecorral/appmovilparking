@@ -7,10 +7,9 @@ import {UserEntreprise} from "../../models/userEntreprise";
 import { Empresa } from "../../models/empresa";
 
 /**
- * Generated class for the RegistEntreprise2Page page.
+ * Pargina de registro del perfil de la empresa
  *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
+ *  Formulario para completar el resto de información de la empresa
  */
 
 @IonicPage()
@@ -28,6 +27,7 @@ export class RegistEntreprise2Page {
               private afDatabase: AngularFireDatabase) {
   }
 
+  // Guarda en la base de datos la información del perfil de la empresa
   createProfile() {
     this.userEntreprise.role = Role.entreprise;
     this.nombre = this.userEntreprise.nombre;

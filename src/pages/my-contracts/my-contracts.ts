@@ -5,10 +5,9 @@ import {AuthUserProvider} from "../../providers/auth-user/auth-user";
 import {AngularFireDatabase} from "angularfire2/database";
 
 /**
- * Generated class for the MyContractsPage page.
+ * Página de contratos de una empresa con un parking
  *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
+ * Muestra los contratos que se han generado al confirmar una reserva un parking y su información
  */
 
 @IonicPage()
@@ -24,10 +23,12 @@ export class MyContractsPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private userAuth: AuthUserProvider,
               private afDatabase: AngularFireDatabase) {
+   // Recupera la información del usuario autenticado
     this.userAuth.verificaUsuario().subscribe(data => {
       if (!data){
         return;
       }
+      // Recupera la información del usuario empresa
       this.afDatabase.object(`userEntreprise/${data.uid}`).valueChanges()
         .subscribe( userData => {
           this.userEntrepriseData = userData;
@@ -37,6 +38,7 @@ export class MyContractsPage {
   }
 
   ionViewDidLoad() {
+    // Recupera la información de las reservas que tiene un usuario, si estan confirmadas recupera la información en formato contrato
     this.afDatabase.list('reserva').valueChanges().subscribe( reservasData => {
       if(!reservasData){
         return;

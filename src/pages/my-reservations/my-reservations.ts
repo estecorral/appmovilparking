@@ -6,10 +6,9 @@ import {AuthUserProvider} from "../../providers/auth-user/auth-user";
 import {MovimientosEmpresaPage} from "../movimientos-empresa/movimientos-empresa";
 
 /**
- * Generated class for the MyReservationsPage page.
+ * Página de reservas de una empresa
  *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
+ * Muestra un listado con las reservas que ha realizado la empresa en los distintos parkings
  */
 
 @IonicPage()
@@ -26,10 +25,12 @@ export class MyReservationsPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private afDataBase: AngularFireDatabase,
               private userAuth: AuthUserProvider) {
+    // Recupera la información del usuario autenticado
     this.userAuth.verificaUsuario().subscribe(data => {
       if (!data){
         return;
       }
+      // Recupera los datos del perfil de la empresa autenticada
       this.afDataBase.object(`userEntreprise/${data.uid}`).valueChanges()
         .subscribe( userData => {
           this.userEntrepriseData = userData;
@@ -39,6 +40,7 @@ export class MyReservationsPage {
 
   }
   ionViewDidLoad() {
+    // Recupera lo datos de las reservas realizadas por la empresa en los distintos parkings
     this.afDataBase.list('reserva').valueChanges().subscribe( reservasData => {
       if(!reservasData){
         return;
@@ -52,6 +54,7 @@ export class MyReservationsPage {
       }
     });
   }
+  // Navega a la página de movimientos de la empresa en un determinado parking
   reservaMovimientos(reserva: any){
     this.navCtrl.push(MovimientosEmpresaPage, {reserva});
   }

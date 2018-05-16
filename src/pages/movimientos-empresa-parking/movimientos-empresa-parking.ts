@@ -4,10 +4,9 @@ import {Movimiento} from "../../models/movimiento";
 import {AngularFireDatabase} from "angularfire2/database";
 
 /**
- * Generated class for the MovimientosEmpresaParkingPage page.
+ * Págona de movimientos de la empresa en un parking
  *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
+ * Muestra los movimientos de una empresa en un parking concreto
  */
 
 @IonicPage()
@@ -21,8 +20,9 @@ export class MovimientosEmpresaParkingPage {
   movimientos = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private afDatabase: AngularFireDatabase) {
+   // recupera la información de la reserva de la página anterior
     this.reserva = this.navParams.get('reserva');
-    console.log(this.reserva);
+    // Recupera la información de los movimientos de la emprea en un parking determinado
     this.afDatabase.list('entradas').valueChanges().subscribe(data => {
       if(!data){
         return;
@@ -33,13 +33,12 @@ export class MovimientosEmpresaParkingPage {
           this.movimientos.push(data[i]);
         }
       }
-      console.log(this.movimientos);
     });
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad MovimientosEmpresaParkingPage');
   }
+  // Función que comprueba el estado de una reserva
   reservaConfirmada() {
     if (this.reserva.estado === 'confirmada'){
       return true;

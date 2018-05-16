@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
-import {AngularFireAuth} from "angularfire2/auth";
 import {AngularFireDatabase} from "angularfire2/database";
 import {LoginPage} from "../login/login";
 import {ParkingListPage} from "../parking-list/parking-list";
@@ -13,10 +12,9 @@ import {SalidasPage} from "../salidas/salidas";
 import {PlazasPage} from "../plazas/plazas";
 
 /**
- * Generated class for the HomePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
+ * Página home
+ * Muestra un home según el tipo de usuario que se conecte (Usuario de parking o usuario de empresa)
+ * con su menú de gestión correspondiente.
  */
 
 @IonicPage()
@@ -30,9 +28,9 @@ export class HomePage {
   userEntrepriseData: {};
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-              private toast: ToastController, private userAuth: AngularFireAuth,
-              private afDatabase: AngularFireDatabase, private authUser: AuthUserProvider) {
-
+              private toast: ToastController, private afDatabase: AngularFireDatabase,
+              private authUser: AuthUserProvider) {
+// Devuelve el usuario que esta autenticado y muestra un mensaje de bienvenida
     this.authUser.verificaUsuario().subscribe(data => {
       if (!data){
         return;
@@ -41,11 +39,12 @@ export class HomePage {
         message: `Bienvenido, ${data.email}`,
         duration: 3000
       }).present();
-
+// Devuelve la información de un usuario de Parking
       this.afDatabase.object(`userParking/${data.uid}`).valueChanges()
         .subscribe( userData => {
           this.userParkingData = userData;
         });
+      //Devuelve la información de un usuario empresa
       this.afDatabase.object(`userEntreprise/${data.uid}`).valueChanges()
         .subscribe( userData => {
           this.userEntrepriseData = userData;

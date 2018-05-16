@@ -1,15 +1,13 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {AddPlazasPage} from "../add-plazas/add-plazas";
 import {AngularFireDatabase} from "angularfire2/database";
 import {AuthUserProvider} from "../../providers/auth-user/auth-user";
 import {Parking} from "../../models/parking";
 
 /**
- * Generated class for the PlazasPage page.
+ * Página con las plazas del parking
  *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
+ * Muesta las plazas del parking y su estado
  */
 
 @IonicPage()
@@ -23,12 +21,14 @@ export class PlazasPage {
   parking: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, private afDatabase: AngularFireDatabase,
               private authUser: AuthUserProvider) {
+    // recupera la información del usuario autenticado
     this.authUser.verificaUsuario().subscribe(data => {
       if (!data){
         return;
       }
       this.keyParking = data.uid;
     });
+    // Recupera la información del perfil del parking
     this.afDatabase.list('parkings').valueChanges().subscribe(data => {
       data.forEach(parking => {
         if (this.keyParking === (parking as Parking).key){

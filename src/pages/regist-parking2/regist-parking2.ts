@@ -7,10 +7,9 @@ import {Role} from "../../enum/role.enum";
 import {Parking} from "../../models/parking";
 
 /**
- * Generated class for the RegistParking2Page page.
+ * Página de registro de datos del perfil del parking
  *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
+ * Formulario para guardar la información del perfil del parking
  */
 
 @IonicPage()
@@ -28,7 +27,7 @@ export class RegistParking2Page {
   constructor(public navCtrl: NavController, public navParams: NavParams, private authPark: AngularFireAuth,
               private afDatabase: AngularFireDatabase) {
   }
-
+ // Guarda en base de datos la información del perfil del parking
   createProfile() {
     this.userParking.role = Role.parking;
     console.log(this.userParking);

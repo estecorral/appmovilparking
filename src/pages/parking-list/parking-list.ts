@@ -5,10 +5,10 @@ import {Observable} from "rxjs/Observable";
 import {Subject} from "rxjs/Subject";
 import {DetalleParkingPage} from "../detalle-parking/detalle-parking";
 /**
- * Generated class for the ParkingListPage page.
+ * Pagina que lista los parking en una localidad
  *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
+ * Permite buscar parkings en una determinada localidad y muestra la lista de los parkings de la localidad que
+ * se ha introducido en el buscador
  */
 
 @IonicPage()
@@ -24,23 +24,25 @@ export class ParkingListPage {
   localidades;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public afDatabase: AngularFireDatabase) {
+    // Recupera la información de las localidades
     Observable.combineLatest(this.startobs, this.endobs).subscribe((value) => {
       this.firequery(value[0], value[1]).subscribe((localidades) => {
         this.localidades = localidades;
       });
     });
   }
+  // Recupera los distintos parkings según los caracteres que vamos introduciéndo en el buscador
   getItems($event) {
     let val = $event.target.value;
     this.startAt.next(val);
     this.endAt.next(val + "\uf8ff");
   }
-
+// Query par recuperar las localidades ordenadas según los caracteres escritos en el buscador
   firequery(start, end){
     return this.afDatabase.list('parkings', ref => ref.limitToFirst(4).orderByChild('localidad')
       .startAt(start).endAt(end)).valueChanges();
   }
-
+  // Navega hacia la pagina de detarlle de parking y envia la información del parking para mostrarla
   goDetalle(parking){
     this.navCtrl.push(DetalleParkingPage, {parking});
   }

@@ -5,10 +5,9 @@ import {AngularFireDatabase} from "angularfire2/database";
 import {DetalleMovimientoPage} from "../detalle-movimiento/detalle-movimiento";
 
 /**
- * Generated class for the MovimientosEmpresaPage page.
+ * Página de movimientos de una empresa
  *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
+ * Muesta los movimientos de una empresa en un parking, permite el filtrado de movimientos por fecha
  */
 
 @IonicPage()
@@ -22,7 +21,9 @@ export class MovimientosEmpresaPage {
   movimietosFecha = [];
   fecha: Date;
   constructor(public navCtrl: NavController, public navParams: NavParams, private afDatabase: AngularFireDatabase) {
+    // Recupera los datos de la reserva de la página anterior
     this.reserva = this.navParams.get('reserva');
+    // Recupera los datos de las entradas de la empresa en el parking
     this.afDatabase.list('entradas').valueChanges().subscribe(data => {
       if(!data){
         return;
@@ -38,8 +39,9 @@ export class MovimientosEmpresaPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad MovimientosEmpresaPage');
+
   }
+  // Función para comprobar el estado de una reserva
   reservaConfirmada() {
     if (this.reserva.estado === 'confirmada'){
       return true;
@@ -47,9 +49,11 @@ export class MovimientosEmpresaPage {
       return false;
     }
   }
+  // Navega a la página que muestra el detalle de un movimiento seleccionado, envia la información de este
   datosMovimiento(movimiento: any){
     this.navCtrl.push(DetalleMovimientoPage, {movimiento});
   }
+  // Función para filtrar movimientos por fecha
   filtro(){
 
   }

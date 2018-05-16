@@ -6,10 +6,10 @@ import {GestionContratoPage} from "../gestion-contrato/gestion-contrato";
 import {MovimientosEmpresaParkingPage} from "../movimientos-empresa-parking/movimientos-empresa-parking";
 
 /**
- * Generated class for the ListEntreprisesPage page.
+ * Página de listado de empresa
  *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
+ *Desde esta página un usuario de parking puede ver las empresas que han realizado reservas en su parking y el
+ * estado en el que se encuentran estas reservas
  */
 
 @IonicPage()
@@ -24,7 +24,7 @@ export class ListEntreprisesPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private afDatabase: AngularFireDatabase,
               private userAuth: AuthUserProvider) {
-
+  // recupera la información del usuario autenticado
     this.userAuth.verificaUsuario().subscribe(data => {
       if (!data){
         return;
@@ -37,6 +37,7 @@ export class ListEntreprisesPage {
     });
   }
   ionViewDidLoad() {
+    // Recupera la información de las empreasas que tienen reservas en este parking
     this.afDatabase.list('reserva').snapshotChanges().subscribe( actions => {
       let i = 0;
       actions.forEach(action => {
@@ -50,6 +51,7 @@ export class ListEntreprisesPage {
       });
     });
   }
+  // Función para comprobar el estado de una reserva
   estadoReserva(reservaEstado: string){
     if(reservaEstado === 'pendiente'){
       return true;
@@ -57,11 +59,12 @@ export class ListEntreprisesPage {
       return false;
     }
   }
-
+  // Función para navegar a la pagina de gestión de contrato, envia la key de la reserva
   goGestionContrato(key: string){
     console.log(key);
    this.navCtrl.push(GestionContratoPage, {key});
   }
+  // Función para navegar al listado de movimientos que tiene una empresa en nuestro parking
   goMovimientos(reserva: any){
     this.navCtrl.push(MovimientosEmpresaParkingPage, {reserva});
   }

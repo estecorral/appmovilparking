@@ -1,11 +1,17 @@
 import { Component } from '@angular/core';
-import {AlertController, IonicPage, LoadingController, NavController, NavParams} from 'ionic-angular';
+import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
 import {AngularFireAuth} from "angularfire2/auth";
 import {User} from "../../models/user";
-import { HomePage } from "../home/home";
-import {globAll} from "@ionic/app-scripts/dist/util/glob-util";
 import {AuthUserProvider} from "../../providers/auth-user/auth-user";
-import {AngularFireDatabase} from "angularfire2/database";
+
+/**
+ * Página inicial de login de los usuarios.
+ *
+ * Desde esta página si tenemos un usuario podrémos acceder con nuestro perfil de usuario, en caso contrario tenemos
+ * las opciones de registrarnos en la apliccación según el tipo de usuario que seamos, empresa o parking.
+ * También en el caso de habernos olvidado la contraseña tenemos una opción para recuperarla
+ +*/
+
 
 @IonicPage()
 @Component({
@@ -15,9 +21,9 @@ import {AngularFireDatabase} from "angularfire2/database";
 export class LoginPage {
   user = {} as User;
   constructor(public navCtrl: NavController, public navParams: NavParams, private globarAuth: AngularFireAuth,
-              public alertCtrl: AlertController, private authUser: AuthUserProvider,
-              private loadingCtrl: LoadingController, private afDatabase: AngularFireDatabase) {
+              public alertCtrl: AlertController, private authUser: AuthUserProvider) {
   }
+  // Logea al usuario por medio el servicio de fireAuth
   async login(user :User) {
     try {
       const result = await this.globarAuth.auth.signInWithEmailAndPassword(user.email, user.password);
@@ -28,22 +34,23 @@ export class LoginPage {
     catch (e){
       let alert = this.alertCtrl.create({
         title: 'Error en el login',
-        subTitle: e,
+        subTitle: 'Contraseña o mail incorrectos',
         buttons: ['Aceptar']
       });
       alert.present();
     }
   }
-
+// Función par navegar a la pagina de registro de parkings
   registNewParking(){
     this.navCtrl.push('RegistParkingPage');
   }
-
+// Función para navegar a la pagina de registro de empresas
   registNewEntreprise(){
     this.navCtrl.push('RegistEntreprisePage');
   }
+  //Función que llama al servicio de FireAuth para la recuperación de contraseñas
   recuperarPass(){
-    let alert = this.alertCtrl.create({
+    this.alertCtrl.create({
       title: 'Recuperar contraseña',
       subTitle: 'Introduce el correo electronico de tu cuenta, te enviaremos una nueva contraseña',
       inputs: [
@@ -73,7 +80,7 @@ export class LoginPage {
             }).catch(e => {
               let alert = this.alertCtrl.create({
                 title: 'Error al recuperar contraseña',
-                subTitle: e,
+                subTitle: 'Email incorrecto o usuario no registrado',
                 buttons: ['Aceptar']
               });
               alert.present();

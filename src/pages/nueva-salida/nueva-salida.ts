@@ -5,10 +5,11 @@ import {AngularFireDatabase} from "angularfire2/database";
 import {SalidasPage} from "../salidas/salidas";
 
 /**
- * Generated class for the NuevaSalidaPage page.
+ * Página de registro de una nueva salida
  *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
+ * Formulario para registrar las salidad del parking, en primer lugar se ha de seleccionar la matricula del camión, solo
+ * se muestran las matriculas de los camiones que se encuentran dentro del parking, y después se completa la información
+ * para registrar la información.
  */
 
 @IonicPage()
@@ -27,7 +28,9 @@ export class NuevaSalidaPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private afDatabase: AngularFireDatabase,
               public alertCtrl: AlertController) {
+    // Recibe la clave del parking desde el que que vamos a registrar la salida
     this.keyParking = this.navParams.get('keyParking');
+    // Recupera la información de movimientos que están dentro del parking
     this.afDatabase.list('entradas').valueChanges().subscribe(data => {
       if(!data){
         return;
@@ -37,19 +40,19 @@ export class NuevaSalidaPage {
           this.movimientos.push(data[i]);
         }
       }
-      console.log(this.movimientos);
     });
 
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad NuevaSalidaPage');
+
   }
+  // Función que guarda los movientos de salida para despues mostrarlos
   mostrarDatosMovimiento(movimiento: any) {
     this.movimientoSalida = movimiento;
-    console.log(this.movimientoSalida);
   }
-
+// Registra en la base de datos la nueva salida con toda la información, lo que realmente se realiza es una actualización
+//  de una entrada modificando su estado de in a out para indicar que el movimiento es una salida.
   nuevaSalida() {
     console.log(this.salida);
     this.afDatabase.list('entradas').snapshotChanges().subscribe( actions =>

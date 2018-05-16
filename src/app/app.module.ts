@@ -13,7 +13,6 @@ import { firebaseConfig } from "../config/firebase.config";
 
 // servicios
 import { UserParkingProvider } from '../providers/user-parking/user-parking';
-import { UserEntrepriseProvider } from '../providers/user-entreprise/user-entreprise';
 import { ParkingsProvider } from '../providers/parkings/parkings';
 import { AuthUserProvider } from '../providers/auth-user/auth-user';
 //pages
@@ -29,7 +28,6 @@ import {SalidasPage} from "../pages/salidas/salidas";
 import {NuevaEntradaPage} from "../pages/nueva-entrada/nueva-entrada";
 import {NuevaSalidaPage} from "../pages/nueva-salida/nueva-salida";
 import {PlazasPage} from "../pages/plazas/plazas";
-import {AddPlazasPage} from "../pages/add-plazas/add-plazas";
 import {MovimientosEmpresaPage} from "../pages/movimientos-empresa/movimientos-empresa";
 import {DetalleMovimientoPage} from "../pages/detalle-movimiento/detalle-movimiento";
 import {MovimientosEmpresaParkingPage} from "../pages/movimientos-empresa-parking/movimientos-empresa-parking";
@@ -49,7 +47,6 @@ import {MovimientosEmpresaParkingPage} from "../pages/movimientos-empresa-parkin
     NuevaEntradaPage,
     NuevaSalidaPage,
     PlazasPage,
-    AddPlazasPage,
     MovimientosEmpresaPage,
     DetalleMovimientoPage,
     MovimientosEmpresaParkingPage
@@ -77,7 +74,6 @@ import {MovimientosEmpresaParkingPage} from "../pages/movimientos-empresa-parkin
     NuevaEntradaPage,
     NuevaSalidaPage,
     PlazasPage,
-    AddPlazasPage,
     MovimientosEmpresaPage,
     DetalleMovimientoPage,
     MovimientosEmpresaParkingPage
@@ -88,7 +84,6 @@ import {MovimientosEmpresaParkingPage} from "../pages/movimientos-empresa-parkin
 
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserParkingProvider,
-    UserEntrepriseProvider,
     ParkingsProvider,
     AuthUserProvider,
   ]

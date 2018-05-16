@@ -6,10 +6,9 @@ import {AuthUserProvider} from "../../providers/auth-user/auth-user";
 import {Movimiento} from "../../models/movimiento";
 
 /**
- * Generated class for the EntradasPage page.
+ * Página de entradas
  *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
+ * Desde aquí se visualizan todas las entradas en el parking y se pueden añadir nuevas entradas
  */
 
 @IonicPage()
@@ -28,12 +27,14 @@ export class EntradasPage {
   }
 
   ionViewDidLoad() {
+    // Recuperamos la clave del usuario del parking que esta autenticado
     this.authUser.verificaUsuario().subscribe(data => {
       if (!data){
         return;
       }
       this.keyParking = data.uid;
     });
+    // Recuperamos los datos de los movimientos de entrada que tiene el parking que esta autenticado actualmente
     this.afDatabase.list('entradas').valueChanges().subscribe(data => {
       if(!data){
         return;
@@ -45,7 +46,7 @@ export class EntradasPage {
       }
     });
   }
-
+  // Función para navegar a la página para añadir una nueva entrada
   addEntrada(keyParking: string){
     this.navCtrl.push(NuevaEntradaPage, {keyParking});
   }

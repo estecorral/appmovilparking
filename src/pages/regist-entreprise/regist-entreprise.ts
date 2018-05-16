@@ -2,13 +2,11 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {User} from "../../models/user";
 import {AngularFireAuth} from "angularfire2/auth";
-import { RegistEntreprise2Page} from "../regist-entreprise2/regist-entreprise2";
 
 /**
- * Generated class for the RegistEntreprisePage page.
+ * Página de registro de una empresa
  *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
+ * Formulario para registrar el usuario empresa, en un segundo paso se registra la información del perfil
  */
 
 @IonicPage()
@@ -23,8 +21,8 @@ export class RegistEntreprisePage {
   }
 
   async registUser(user: User) {
+    // Registra el usuario empresa y nos envia a la siguiente página en la que se registra la información del perfil
     const result = this.authPark.auth.createUserAndRetrieveDataWithEmailAndPassword(user.email, user.password)
       .then(()=> this.navCtrl.push('RegistEntreprise2Page'));
-    console.log(result);
   }
 }

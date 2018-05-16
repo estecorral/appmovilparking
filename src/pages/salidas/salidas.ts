@@ -6,10 +6,9 @@ import {AngularFireDatabase} from "angularfire2/database";
 import {NuevaSalidaPage} from "../nueva-salida/nueva-salida";
 
 /**
- * Generated class for the SalidasPage page.
+ * Página de movimientos de salida de un parking
  *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
+ * Muesta el listado de todas las salidad del parking
  */
 
 @IonicPage()
@@ -26,12 +25,14 @@ export class SalidasPage {
   }
 
   ionViewDidLoad() {
+    // recupera la información del usuario autenticado
     this.authUser.verificaUsuario().subscribe(data => {
       if (!data){
         return;
       }
       this.keyParking = data.uid;
     });
+    // Recoge la información de los movientos de salida de la base de datos para  listarla
     this.afDatabase.list('entradas').valueChanges().subscribe(data => {
       if(!data){
         return;
@@ -44,7 +45,7 @@ export class SalidasPage {
       console.log(this.movimientos);
     });
   }
-
+// Función que navega a la página de añadir nueva salida.
   addSalida(keyParking: string){
     this.navCtrl.push(NuevaSalidaPage, {keyParking});
   }

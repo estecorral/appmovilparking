@@ -4,13 +4,10 @@ import {AngularFireDatabase} from "angularfire2/database";
 import {AlertController} from "ionic-angular";
 import {Reserva} from "../../models/reserva";
 import {Empresa} from "../../models/empresa";
-import {containerStart} from "@angular/core/src/render3/instructions";
 
 /**
- * Generated class for the GestionContratoPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
+ *  Pagina de gestión de contratos, desde aquí se ve la información de una reserva y se confirman
+ *  los contratos con las empresas
  */
 
 @IonicPage()
@@ -27,6 +24,19 @@ export class GestionContratoPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, private afDatabase: AngularFireDatabase,
               public alertCtrl: AlertController) {
     this.reservaKey = this.navParams.get('key');
+    // Recupera los datos de la reserva
+    this.afDatabase.list('reserva').snapshotChanges().subscribe( actions =>
+      actions.forEach(action => {
+        if(!action.payload.val()){
+          return;
+        }
+        this.reservaKey = this.navParams.get('key');
+        if(this.reservaKey === action.key){
+          this.reserva = action.payload.val();
+          this.keyEmpresa = action.payload.val().keyEmpresa;
+        }
+      }));
+    // Recupera los datos de las empresas
     this.afDatabase.list('entreprises').valueChanges().subscribe( empresasData => {
       if(!empresasData){
         return;
@@ -36,25 +46,13 @@ export class GestionContratoPage {
           this.empresa = empresasData[i];
         }
       }
-      console.log(this.empresa);
     });
   }
   ionViewDidLoad(){
-    this.afDatabase.list('reserva').snapshotChanges().subscribe( actions =>
-      actions.forEach(action => {
-        if(!action.payload.val()){
-          console.log('No definido');
-          return;
-        }
-        if(this.reservaKey === action.key){
-          this.reserva = action.payload.val();
-          this.keyEmpresa = action.payload.val().keyEmpresa;
-          console.log(this.reserva);
-          return;
-        }
-      }));
+
   }
 
+  // Comprueba el estado de una reserva para poder confirmarla
   async estadoPendiente(estado: string) {
     if(estado === 'pendiente'){
       return true;
@@ -62,7 +60,7 @@ export class GestionContratoPage {
       return false;
     }
   }
-
+// Función que una vez que confirmamos una reserva os muestra un alert de que se ha realizado correctamente
   confirmarContrato(){
     this.afDatabase.list('reserva').update(this.reservaKey, {estado: 'confirmada'});
     let alert = this.alertCtrl.create({
