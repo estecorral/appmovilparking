@@ -5,7 +5,7 @@ export interface Parking{
   localidad: string;
   direccion: string;
   telefono:string;
-  plazas: number;
+  plazas: any[];
   servicios: string[];
   key: string;
 }

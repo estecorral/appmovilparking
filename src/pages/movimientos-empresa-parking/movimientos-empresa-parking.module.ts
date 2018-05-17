@@ -4,7 +4,7 @@ import { MovimientosEmpresaParkingPage } from './movimientos-empresa-parking';
 
 @NgModule({
   declarations: [
-    MovimientosEmpresaParkingPage,
+   // MovimientosEmpresaParkingPage,
   ],
   imports: [
     IonicPageModule.forChild(MovimientosEmpresaParkingPage),

@@ -24,5 +24,6 @@ export class RegistEntreprisePage {
     // Registra el usuario empresa y nos envia a la siguiente página en la que se registra la información del perfil
     const result = this.authPark.auth.createUserAndRetrieveDataWithEmailAndPassword(user.email, user.password)
       .then(()=> this.navCtrl.push('RegistEntreprise2Page'));
+    console.log(result);
   }
 }

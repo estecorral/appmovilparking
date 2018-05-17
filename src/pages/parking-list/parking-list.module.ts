@@ -4,7 +4,7 @@ import { ParkingListPage } from './parking-list';
 
 @NgModule({
   declarations: [
-    ParkingListPage,
+   // ParkingListPage,
   ],
   imports: [
     IonicPageModule.forChild(ParkingListPage),

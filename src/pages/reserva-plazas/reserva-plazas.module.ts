@@ -4,7 +4,7 @@ import { ReservaPlazasPage } from './reserva-plazas';
 
 @NgModule({
   declarations: [
-    ReservaPlazasPage,
+  //  ReservaPlazasPage,
   ],
   imports: [
     IonicPageModule.forChild(ReservaPlazasPage),

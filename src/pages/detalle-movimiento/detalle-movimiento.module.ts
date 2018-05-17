@@ -4,7 +4,7 @@ import { DetalleMovimientoPage } from './detalle-movimiento';
 
 @NgModule({
   declarations: [
-    DetalleMovimientoPage,
+   // DetalleMovimientoPage,
   ],
   imports: [
     IonicPageModule.forChild(DetalleMovimientoPage),

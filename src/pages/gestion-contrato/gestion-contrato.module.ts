@@ -4,7 +4,7 @@ import { GestionContratoPage } from './gestion-contrato';
 
 @NgModule({
   declarations: [
-    GestionContratoPage,
+   // GestionContratoPage,
   ],
   imports: [
     IonicPageModule.forChild(GestionContratoPage),

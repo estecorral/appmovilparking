@@ -24,13 +24,14 @@ export class RegistParking2Page {
   clave : string;
   email: string;
   name: string;
+  numPlazas: number;
+  plazas = [];
   constructor(public navCtrl: NavController, public navParams: NavParams, private authPark: AngularFireAuth,
               private afDatabase: AngularFireDatabase) {
   }
  // Guarda en base de datos la información del perfil del parking
   createProfile() {
     this.userParking.role = Role.parking;
-    console.log(this.userParking);
     this.authPark.authState.take(1).subscribe(auth => {
       this.clave = auth.uid;
       this.email = auth.email;
@@ -44,7 +45,18 @@ export class RegistParking2Page {
     this.parking.key = this.clave;
     this.parking.email = this.email;
     this.parking.name = this.name;
+    this.pushPlazas();
+    this.parking.plazas = this.plazas;
     this.afDatabase.list(`parkings`).push(this.parking);
+  }
+  pushPlazas(){
+    for (let i = 0; i <= this.numPlazas; i++){
+      this.plazas[i] = ({
+        numero: i+1,
+        estado: 'libre'
+      });
+      //this.parking.plazas.push(this.plazas[i]);
+    }
   }
 
 }

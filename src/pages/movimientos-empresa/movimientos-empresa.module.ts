@@ -4,7 +4,7 @@ import { MovimientosEmpresaPage } from './movimientos-empresa';
 
 @NgModule({
   declarations: [
-    MovimientosEmpresaPage,
+  //  MovimientosEmpresaPage,
   ],
   imports: [
     IonicPageModule.forChild(MovimientosEmpresaPage),

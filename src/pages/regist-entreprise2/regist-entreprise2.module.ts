@@ -4,7 +4,7 @@ import { RegistEntreprise2Page } from './regist-entreprise2';
 
 @NgModule({
   declarations: [
-    RegistEntreprise2Page,
+   RegistEntreprise2Page,
   ],
   imports: [
     IonicPageModule.forChild(RegistEntreprise2Page),

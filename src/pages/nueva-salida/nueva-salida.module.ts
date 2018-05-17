@@ -4,7 +4,7 @@ import { NuevaSalidaPage } from './nueva-salida';
 
 @NgModule({
   declarations: [
-    NuevaSalidaPage,
+    // NuevaSalidaPage,
   ],
   imports: [
     IonicPageModule.forChild(NuevaSalidaPage),
