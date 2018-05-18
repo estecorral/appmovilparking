@@ -19,6 +19,7 @@ export class PlazasPage {
 
   keyParking: string;
   parking: any;
+  plazas = [];
   constructor(public navCtrl: NavController, public navParams: NavParams, private afDatabase: AngularFireDatabase,
               private authUser: AuthUserProvider) {
     // recupera la información del usuario autenticado
@@ -33,6 +34,8 @@ export class PlazasPage {
       data.forEach(parking => {
         if (this.keyParking === (parking as Parking).key){
            this.parking = parking;
+           this.plazas = this.parking.plazas;
+           console.log(this.plazas);
            return;
         }
       });
@@ -43,5 +46,10 @@ export class PlazasPage {
     this.afDatabase.list('parkings').valueChanges().subscribe(data => {
       console.log(data);
     })
+  }
+  estadoPlaza(estado){
+    if(estado === 'libre'){
+      return true;
+    }
   }
 }

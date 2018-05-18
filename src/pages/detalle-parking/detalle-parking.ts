@@ -16,13 +16,21 @@ import {ReservaPlazasPage} from "../reserva-plazas/reserva-plazas";
 })
 export class DetalleParkingPage {
   parking: any;
-
+  numPlazaslibres = 0;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     // Recuperamos la información de la pagina de listado de parkings para mostrar la información del parking seleccionado
     this.parking = this.navParams.get('parking');
+    this.buscarPlazasLibres();
   }
 // Función para navegar a la siguiente pagina de reservas de plazas en el parking mostrado, se envia la info del parking
   goReserva(parking){
     this.navCtrl.push(ReservaPlazasPage, {parking});
+  }
+  buscarPlazasLibres(){
+    for(let i = 1; i < this.parking.plazas.length; i++){
+      if(this.parking.plazas[i].estado === 'libre'){
+        this.numPlazaslibres++;
+      }
+    }
   }
 }

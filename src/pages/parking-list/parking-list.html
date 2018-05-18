@@ -23,7 +23,7 @@
       </ion-avatar>
       <h2>{{parking.name}}</h2>
       <h3>{{parking.email}}</h3>
-      <p>Plazas disponibles: {{parking.plazas}}</p>
+      <p>Plazas disponibles: {{buscarPlazasLibres(parking.plazas)}}</p>
     <p *ngIf="localidades?.length < 1">No se han encontrado parkings en la localidad seleccionada</p>
     </button>
   </ion-list>

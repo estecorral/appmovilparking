@@ -44,9 +44,11 @@
       </ion-list-header>
       <ion-item>
         Estado reserva
-        <ion-note item-end>
-          <p *ngIf="estadoPendiente(reserva.estado)" class="red">{{reserva.estado}}</p>
-          <p *ngIf="!estadoPendiente(reserva.estado)" class="green">{{reserva.estado}}</p>
+        <ion-note item-end *ngIf="estadoPendiente()" class="red">
+          {{reserva.estado}}
+        </ion-note>
+        <ion-note item-end *ngIf="!estadoPendiente()" class="red">
+          {{reserva.estado}}
         </ion-note>
       </ion-item>
       <ion-item>
@@ -77,7 +79,7 @@
 
   <div class="reservaButton">
     <div class="row">
-      <button ion-button block color="primary" (click)="confirmarContrato()"><ion-icon md="md-bookmarks"></ion-icon>Confirmar Contrato</button>
+      <button ion-button block color="primary"  (click)="confirmarContrato()"><ion-icon md="md-bookmarks"></ion-icon>Confirmar Contrato</button>
     </div>
   </div>
 </ion-content>

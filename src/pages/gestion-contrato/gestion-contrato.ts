@@ -53,11 +53,9 @@ export class GestionContratoPage {
   }
 
   // Comprueba el estado de una reserva para poder confirmarla
-  async estadoPendiente(estado: string) {
-    if(estado === 'pendiente'){
+  estadoPendiente() {
+    if (this.reserva.estado === 'pendiente'){
       return true;
-    } else {
-      return false;
     }
   }
 // Función que una vez que confirmamos una reserva os muestra un alert de que se ha realizado correctamente

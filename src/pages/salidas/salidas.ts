@@ -33,7 +33,7 @@ export class SalidasPage {
       this.keyParking = data.uid;
     });
     // Recoge la información de los movientos de salida de la base de datos para  listarla
-    this.afDatabase.list('entradas').valueChanges().subscribe(data => {
+    this.afDatabase.list('movimientos').valueChanges().subscribe(data => {
       if(!data){
         return;
       }

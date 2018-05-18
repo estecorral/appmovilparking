@@ -31,7 +31,7 @@ export class NuevaSalidaPage {
     // Recibe la clave del parking desde el que que vamos a registrar la salida
     this.keyParking = this.navParams.get('keyParking');
     // Recupera la información de movimientos que están dentro del parking
-    this.afDatabase.list('entradas').valueChanges().subscribe(data => {
+    this.afDatabase.list('movimientos').valueChanges().subscribe(data => {
       if(!data){
         return;
       }
@@ -62,7 +62,7 @@ export class NuevaSalidaPage {
         if(this.salida.matriculaCamion === action.payload.val().matriculaCamion && this.salida.tipo === 'in'){
           this.movimientoKey = action.key;
           console.log(this.movimientoKey);
-          this.afDatabase.list('entradas').update(this.movimientoKey, {
+          this.afDatabase.list('movimientos').update(this.movimientoKey, {
             matriculaSemiremolqueSalida: this.salida.matriculaSemiremolqueSalida,
             nombreTransportistaSalida: this.salida.nombreTransportistaSalida,
             dniTranportistaSalida: this.salida.dniTranportistaSalida,

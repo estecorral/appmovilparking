@@ -49,7 +49,9 @@
   </ion-list>
   <ion-item>
     <ion-label color="primary">Plaza</ion-label>
-    <ion-textarea type="text" [(ngModel)]="entrada.plaza"></ion-textarea>
+    <ion-select [(ngModel)]="entrada.plaza">
+      <ion-option *ngFor="let plaza of plazasLibres" [value]="plaza.numero">{{plaza.numero}}</ion-option>
+    </ion-select>
   </ion-item>
   <div class="reservaButton">
     <div class="row">

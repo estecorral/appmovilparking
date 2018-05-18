@@ -4,6 +4,7 @@ import {AngularFireDatabase} from "angularfire2/database";
 import {NuevaEntradaPage} from "../nueva-entrada/nueva-entrada";
 import {AuthUserProvider} from "../../providers/auth-user/auth-user";
 import {Movimiento} from "../../models/movimiento";
+import {Parking} from "../../models/parking";
 
 /**
  * Página de entradas
@@ -21,6 +22,7 @@ export class EntradasPage {
   parking: any;
   keyParking: string;
   movimientos = [];
+  plazas = [];
   constructor(public navCtrl: NavController, public navParams: NavParams, private afDatabase: AngularFireDatabase,
               private authUser: AuthUserProvider) {
 
@@ -35,7 +37,7 @@ export class EntradasPage {
       this.keyParking = data.uid;
     });
     // Recuperamos los datos de los movimientos de entrada que tiene el parking que esta autenticado actualmente
-    this.afDatabase.list('entradas').valueChanges().subscribe(data => {
+    this.afDatabase.list('movimientos').valueChanges().subscribe(data => {
       if(!data){
         return;
       }

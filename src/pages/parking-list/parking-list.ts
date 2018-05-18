@@ -4,6 +4,7 @@ import {AngularFireDatabase} from "angularfire2/database";
 import {Observable} from "rxjs/Observable";
 import {Subject} from "rxjs/Subject";
 import {DetalleParkingPage} from "../detalle-parking/detalle-parking";
+import {Parking} from "../../models/parking";
 /**
  * Pagina que lista los parking en una localidad
  *
@@ -22,6 +23,8 @@ export class ParkingListPage {
   startobs = this.startAt.asObservable();
   endobs = this.endAt.asObservable();
   localidades;
+  plazas = [];
+  plazasLibres = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public afDatabase: AngularFireDatabase) {
     // Recupera la información de las localidades
@@ -45,5 +48,15 @@ export class ParkingListPage {
   // Navega hacia la pagina de detarlle de parking y envia la información del parking para mostrarla
   goDetalle(parking){
     this.navCtrl.push(DetalleParkingPage, {parking});
+  }
+  buscarPlazasLibres(plazas){
+    let j = 0;
+    for(let i = 0; i < plazas.length; i++){
+      if(plazas[i].estado === 'libre'){
+        this.plazasLibres[j] = plazas[i];
+        j++;
+      }
+    }
+    return this.plazasLibres.length - 1;
   }
 }

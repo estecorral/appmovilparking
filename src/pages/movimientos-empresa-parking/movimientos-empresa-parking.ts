@@ -23,7 +23,7 @@ export class MovimientosEmpresaParkingPage {
    // recupera la información de la reserva de la página anterior
     this.reserva = this.navParams.get('reserva');
     // Recupera la información de los movimientos de la emprea en un parking determinado
-    this.afDatabase.list('entradas').valueChanges().subscribe(data => {
+    this.afDatabase.list('movimientos').valueChanges().subscribe(data => {
       if(!data){
         return;
       }
