@@ -4,7 +4,6 @@ import {AngularFireDatabase} from "angularfire2/database";
 import {Observable} from "rxjs/Observable";
 import {Subject} from "rxjs/Subject";
 import {DetalleParkingPage} from "../detalle-parking/detalle-parking";
-import {Parking} from "../../models/parking";
 /**
  * Pagina que lista los parking en una localidad
  *

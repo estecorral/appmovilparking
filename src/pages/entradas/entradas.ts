@@ -4,7 +4,6 @@ import {AngularFireDatabase} from "angularfire2/database";
 import {NuevaEntradaPage} from "../nueva-entrada/nueva-entrada";
 import {AuthUserProvider} from "../../providers/auth-user/auth-user";
 import {Movimiento} from "../../models/movimiento";
-import {Parking} from "../../models/parking";
 
 /**
  * Página de entradas

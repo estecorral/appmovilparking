@@ -50,12 +50,11 @@ export class RegistParking2Page {
     this.afDatabase.list(`parkings`).push(this.parking);
   }
   pushPlazas(){
-    for (let i = 0; i <= this.numPlazas; i++){
+    for (let i = 0; i < this.numPlazas; i++){
       this.plazas[i] = ({
         numero: i+1,
         estado: 'libre'
       });
-      //this.parking.plazas.push(this.plazas[i]);
     }
   }
 

@@ -30,7 +30,7 @@ export class ReservaPlazasPage {
              private afDatabase: AngularFireDatabase ) {
     // recoge la información del parking de la página anterior
     this.parking = this.navParams.get('parking');
-    // Recupera la información del usuario autenticado
+// Recupera la información del usuario autenticado
     this.userAuth.verificaUsuario().subscribe(data => {
       if (!data){
         return;
@@ -39,20 +39,20 @@ export class ReservaPlazasPage {
         .subscribe( userData => {
           this.userEntrepriseData = userData;
           this.claveEmpresa = data.uid;
-          console.log(this.userEntrepriseData);
         });
+      // Recupera la información de la empresa que realiza la reserva
+      this.afDatabase.list('entreprises').valueChanges().subscribe( empresas => {
+        empresas.forEach(empresa => {
+          if(this.claveEmpresa === (empresa as Empresa).key){
+            this.empresa = empresa;
+            return;
+          }
+        });
+      });
     });
-    // Recupera la información de la empresa que realiza la reserva
-    this.afDatabase.list('entreprises').valueChanges().subscribe( empresasData => {
-      if(!empresasData){
-        return;
-      }
-      for(let i=0; empresasData.length >= i; i++){
-        if(empresasData[i] && (empresasData[i] as Empresa).key === this.claveEmpresa){
-          this.empresa = empresasData[i];
-        }
-      }
-    });
+  }
+  ionViewDidLoad() {
+
   }
 // Guarda en base de datos la solicitud de reserva de plazas
   reservar(){

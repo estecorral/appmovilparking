@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
+import {AlertController, IonicPage, NavController} from 'ionic-angular';
 import {AngularFireAuth} from "angularfire2/auth";
 import {User} from "../../models/user";
 import {AuthUserProvider} from "../../providers/auth-user/auth-user";
@@ -20,7 +20,7 @@ import {AuthUserProvider} from "../../providers/auth-user/auth-user";
 })
 export class LoginPage {
   user = {} as User;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private globarAuth: AngularFireAuth,
+  constructor(public navCtrl: NavController, private globarAuth: AngularFireAuth,
               public alertCtrl: AlertController, private authUser: AuthUserProvider) {
   }
   // Logea al usuario por medio el servicio de fireAuth

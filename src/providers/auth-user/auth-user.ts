@@ -14,6 +14,8 @@ export class AuthUserProvider {
 
   }
 
+
+
   verificaUsuario(){
     return this.auth.authState;
   }

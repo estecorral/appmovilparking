@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
 import {AngularFireDatabase} from "angularfire2/database";
 import {Movimiento} from "../../models/movimiento";
-import {EntradasPage} from "../entradas/entradas";
-import {Parking} from "../../models/parking";
+import {HomePage} from "../home/home";
 
 /**
  * Página Nueva entrada
@@ -24,23 +23,26 @@ export class NuevaEntradaPage {
   entrada = {} as Movimiento;
   plazas = [];
   plazasLibres = [];
+  keyPark: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private afDatabase: AngularFireDatabase) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private afDatabase: AngularFireDatabase,
+              public alertCtrl: AlertController) {
     // Recoge la información de la pagina anterior con la clave del parking en el que se va a registrar el movimiento
     this.keyParking = this.navParams.get('keyParking');
-
   }
 
   ionViewDidLoad() {
     // Recupera la información del perfil del parking
-    this.afDatabase.list('parkings').valueChanges().subscribe(data => {
-      data.forEach(parking => {
-        if (this.keyParking === (parking as Parking).key){
-          this.plazas = (parking as Parking).plazas;
+    this.afDatabase.list('parkings').snapshotChanges().subscribe(parkings => {
+      parkings.forEach(parking => {
+        if (this.keyParking === parking.payload.val().key){
+          this.plazas = parking.payload.val().plazas;
+          this.keyPark = parking.key;
           return;
         }
       });
     });
+
     // recupera la información de las reservas confirmadas para compronar las empresas que tienen la reserva confirmada
     this.afDatabase.list('reserva').snapshotChanges().subscribe( actions => {
       let i = 0;
@@ -64,11 +66,16 @@ export class NuevaEntradaPage {
     this.entrada.tipo = 'in';
     this.afDatabase.list('movimientos').push(this.entrada);
     this.actualizarEstadoPlaza(this.entrada.plaza);
-    this.afDatabase.list(`parkings/${this.keyParking}`).update('plazas', {
-      plazas: this.plazas
+    this.afDatabase.list(`parkings`).update(this.keyPark, {plazas: this.plazas});
+    let alert = this.alertCtrl.create({
+      title: 'Entrada registrada',
+      subTitle: 'La entrada se ha registrado correctamente',
+      buttons: ['Aceptar']
     });
-    this.navCtrl.push(EntradasPage);
+    alert.present();
+    this.navCtrl.setRoot(HomePage);
   }
+  // Función para listar solo las plazas que estan libres en la selección de plaza al registrar entrada
   buscarPlazasLibres(){
     let j = 0;
     for(let i = 0; i < this.plazas.length; i++){
@@ -78,14 +85,14 @@ export class NuevaEntradaPage {
       }
     }
   }
+  // Actualiza el estado de las plazas al entrar un camión en una entrada
   actualizarEstadoPlaza(plaza){
     for(let i = 0; i < this.plazas.length; i++) {
       if(i = plaza - 1) {
         this.plazas[i] = {
           estado: 'ocupada',
-          plaza: plaza
+          numero: plaza
         }
-        console.log(this.plazas);
         return;
       }
     }

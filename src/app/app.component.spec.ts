@@ -10,7 +10,6 @@ import {
   StatusBarMock,
   SplashScreenMock
 } from '../../test-config/mocks-ionic';
-import {LoginPage} from "../pages/login/login";
 
 describe('MyApp Component', () => {
   let fixture: ComponentFixture<MyApp>;
@@ -44,9 +43,4 @@ describe('MyApp Component', () => {
     expect(fixture).toBeTruthy();
     expect(component).toBeTruthy();
   });
-
-  it('Inicializa como root page LoginPage', () => {
-    expect(component['rootPage']).toBe(LoginPage);
-  });
-
 });

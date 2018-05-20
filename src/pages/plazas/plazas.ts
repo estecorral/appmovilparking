@@ -17,39 +17,36 @@ import {Parking} from "../../models/parking";
 })
 export class PlazasPage {
 
-  keyParking: string;
-  parking: any;
-  plazas = [];
-  constructor(public navCtrl: NavController, public navParams: NavParams, private afDatabase: AngularFireDatabase,
-              private authUser: AuthUserProvider) {
-    // recupera la información del usuario autenticado
-    this.authUser.verificaUsuario().subscribe(data => {
-      if (!data){
+keyParking: string;
+parking: any;
+plazas = [];
+constructor(public navCtrl: NavController, public navParams: NavParams, private afDatabase: AngularFireDatabase,
+  private authUser: AuthUserProvider) {
+  // recupera la información del usuario autenticado
+  this.authUser.verificaUsuario().subscribe(data => {
+    if (!data){
+      return;
+    }
+    this.keyParking = data.uid;
+  });
+  // Recupera la información del perfil del parking
+  this.afDatabase.list('parkings').valueChanges().subscribe(data => {
+    data.forEach(parking => {
+      if (this.keyParking === (parking as Parking).key){
+        this.parking = parking;
+        this.plazas = this.parking.plazas;
         return;
       }
-      this.keyParking = data.uid;
     });
-    // Recupera la información del perfil del parking
-    this.afDatabase.list('parkings').valueChanges().subscribe(data => {
-      data.forEach(parking => {
-        if (this.keyParking === (parking as Parking).key){
-           this.parking = parking;
-           this.plazas = this.parking.plazas;
-           console.log(this.plazas);
-           return;
-        }
-      });
-    })
-  }
+  })
+}
 
-  ionViewDidLoad() {
-    this.afDatabase.list('parkings').valueChanges().subscribe(data => {
-      console.log(data);
-    })
+ionViewDidLoad() {
+
+}
+estadoPlaza(estado){
+  if(estado === 'libre'){
+    return true;
   }
-  estadoPlaza(estado){
-    if(estado === 'libre'){
-      return true;
-    }
-  }
+}
 }
