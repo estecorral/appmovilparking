@@ -5,6 +5,7 @@ import {AngularFireDatabase} from "angularfire2/database";
 import {Role} from "../../enum/role.enum";
 import {UserEntreprise} from "../../models/userEntreprise";
 import { Empresa } from "../../models/empresa";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 
 /**
  * Pargina de registro del perfil de la empresa
@@ -23,10 +24,21 @@ export class RegistEntreprise2Page {
   clave: string;
   nombre: string;
   email: string;
+  form: FormGroup;
   constructor(public navCtrl: NavController, public navParams: NavParams, private authEntreprise: AngularFireAuth,
-              private afDatabase: AngularFireDatabase) {
+              private afDatabase: AngularFireDatabase, public fb: FormBuilder) {
+    //Comprobaciones de datos del formulario:
+    this.form = this.fb.group({
+      nombre: new FormControl('', Validators.required),
+      provincia: new FormControl('', Validators.required),
+      localidad: new FormControl('', Validators.required),
+      telefono: new FormControl ('', Validators.compose([
+        Validators.required,
+        Validators.minLength(9)
+      ])),
+      cif: new FormControl('', Validators.required)
+    });
   }
-
   // Guarda en la base de datos la información del perfil de la empresa
   createProfile() {
     this.userEntreprise.role = Role.entreprise;

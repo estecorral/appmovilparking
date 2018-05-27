@@ -15,53 +15,54 @@
 
 <ion-content padding class="background">
   <ion-card>
-  <ion-list>
-  <ion-item>
-    <ion-input type="text" placeholder="Nombre parking" [(ngModel)]="userParking.name"></ion-input>
-  </ion-item>
+    <form [formGroup]="form">
+      <ion-list>
+        <ion-item>
+          <ion-input type="text" name="nombre" placeholder="Nombre parking" [(ngModel)]="userParking.name" formControlName="nombre"></ion-input>
+        </ion-item>
 
-  <ion-item>
-    <ion-input type="text" placeholder="Provincia" [(ngModel)]="parking.provincia"></ion-input>
-  </ion-item>
+        <ion-item>
+          <ion-input type="text" name="provincia" placeholder="Provincia" [(ngModel)]="parking.provincia" formControlName="provincia"></ion-input>
+        </ion-item>
 
-      <ion-item>
-        <ion-input type="text" placeholder="Localidad" [(ngModel)]="parking.localidad"></ion-input>
-      </ion-item>
+        <ion-item>
+          <ion-input type="text" name="localidad" placeholder="Localidad" [(ngModel)]="parking.localidad" formControlName="localidad"></ion-input>
+        </ion-item>
 
-      <ion-item>
-        <ion-input type="text" placeholder="Direccion" [(ngModel)]="parking.direccion"></ion-input>
-      </ion-item>
+        <ion-item>
+          <ion-input type="text" name="direccion" placeholder="Direccion" [(ngModel)]="parking.direccion" formControlName="direccion"></ion-input>
+        </ion-item>
 
-      <ion-item>
-        <ion-input type="number" placeholder="Teléfono"  [(ngModel)]="parking.telefono"></ion-input>
-      </ion-item>
+        <ion-item>
+          <ion-input type="number" name="telefono" placeholder="Teléfono"  [(ngModel)]="parking.telefono" formControlName="telefono"></ion-input>
+        </ion-item>
 
-      <ion-item>
-        <ion-input type="number" placeholder="Plazas" [(ngModel)]="numPlazas" ngDefaultControl ></ion-input>
-      </ion-item>
-      <br/>
-
+        <ion-item>
+          <ion-input type="number" name="plazas" placeholder="Plazas" [(ngModel)]="numPlazas" ngDefaultControl formControlName="plazas"></ion-input>
+        </ion-item>
+        <br/>
       </ion-list>
-      </ion-card>
+    </form>
+  </ion-card>
 
-      <ion-card>
-        <ion-list>
-          <ion-item>
-            <ion-label>Servicios</ion-label>
-            <ion-select [(ngModel)]="parking.servicios" multiple="true" cancelText="Cancelar" okText="Aceptar">
-              <ion-option value="Cafeteria">Cafeteria</ion-option>
-              <ion-option value="Restaurante">Restaurante</ion-option>
-              <ion-option value="Alquiler Coches">Alquiler Coches</ion-option>
-              <ion-option value="Alquiler Naves">Alquiler Naves</ion-option>
-              <ion-option value="Alquiler Oficinas">Alquiler Oficinas</ion-option>
-              <ion-option value="Lavado de vehículos">Lavado de vehículos</ion-option>
-              <ion-option value="Vigilancia activa">Vigilancia Activa</ion-option>
-              <ion-option value="Control de acceso">Control de acceso</ion-option>
-            </ion-select>
-          </ion-item>
-          <br>
-          <button ion-button block (click)="createProfile()">Registrar Parking</button>
-        </ion-list>
-      </ion-card>
+  <ion-card>
+    <ion-list>
+      <ion-item>
+        <ion-label>Servicios</ion-label>
+        <ion-select [(ngModel)]="parking.servicios" multiple="true" cancelText="Cancelar" okText="Aceptar">
+          <ion-option value="Cafeteria">Cafeteria</ion-option>
+          <ion-option value="Restaurante">Restaurante</ion-option>
+          <ion-option value="Alquiler Coches">Alquiler Coches</ion-option>
+          <ion-option value="Alquiler Naves">Alquiler Naves</ion-option>
+          <ion-option value="Alquiler Oficinas">Alquiler Oficinas</ion-option>
+          <ion-option value="Lavado de vehículos">Lavado de vehículos</ion-option>
+          <ion-option value="Vigilancia activa">Vigilancia Activa</ion-option>
+          <ion-option value="Control de acceso">Control de acceso</ion-option>
+        </ion-select>
+      </ion-item>
+      <br>
+      <button ion-button block (click)="createProfile()" [disabled]="!form.valid">Registrar Parking</button>
+    </ion-list>
+  </ion-card>
   </ion-content>
 

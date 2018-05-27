@@ -14,30 +14,32 @@
 
 <ion-content padding class="background">
   <ion-card>
-    <ion-list>
-      <ion-item>
-        <ion-input type="text" placeholder="Nombre Empresa" [(ngModel)]="userEntreprise.nombre"></ion-input>
-      </ion-item>
+    <form [formGroup]="form">
+      <ion-list>
+        <ion-item>
+          <ion-input type="text" placeholder="Nombre Empresa" [(ngModel)]="userEntreprise.nombre" formControlName="nombre"></ion-input>
+        </ion-item>
 
-      <ion-item>
-        <ion-input type="text" placeholder="Provincia" [(ngModel)]="entreprise.provincia"></ion-input>
-      </ion-item>
+        <ion-item>
+          <ion-input type="text" placeholder="Provincia" [(ngModel)]="entreprise.provincia" formControlName="provincia"></ion-input>
+        </ion-item>
 
-      <ion-item>
-        <ion-input type="text" placeholder="Localidad" [(ngModel)]="entreprise.localidad"></ion-input>
-      </ion-item>
+        <ion-item>
+          <ion-input type="text" placeholder="Localidad" [(ngModel)]="entreprise.localidad" formControlName="localidad"></ion-input>
+        </ion-item>
 
-      <ion-item>
-        <ion-input type="text" placeholder="Teléfono"  [(ngModel)]="entreprise.telefono"></ion-input>
-      </ion-item>
+        <ion-item>
+          <ion-input type="text" placeholder="Teléfono"  [(ngModel)]="entreprise.telefono" formControlName="telefono"></ion-input>
+        </ion-item>
 
-      <ion-item>
-        <ion-input type="number" placeholder="Plazas" [(ngModel)]="entreprise.cif"></ion-input>
-      </ion-item>
-      <br/>
-      <br/>
-      <button ion-button block (click)="createProfile()">Registrar Empresa</button>
-    </ion-list>
+        <ion-item>
+          <ion-input type="text" placeholder="cif" [(ngModel)]="entreprise.cif" formControlName="cif"></ion-input>
+        </ion-item>
+        <br/>
+        <br/>
+        <button ion-button block (click)="createProfile()" [disabled]="!form.valid">Registrar Empresa</button>
+      </ion-list>
+    </form>
   </ion-card>
 </ion-content>
 
