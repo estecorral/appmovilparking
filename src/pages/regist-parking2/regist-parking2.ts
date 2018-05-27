@@ -47,6 +47,7 @@ export class RegistParking2Page {
     this.parking.name = this.name;
     this.pushPlazas();
     this.parking.plazas = this.plazas;
+    this.parking.localidad = this.parking.localidad.toLowerCase();
     this.afDatabase.list(`parkings`).push(this.parking);
   }
   pushPlazas(){

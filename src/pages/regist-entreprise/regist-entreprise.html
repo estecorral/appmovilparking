@@ -9,20 +9,23 @@
 
 <ion-content padding class="background">
   <ion-card>
-    <ion-list inset>
-      <ion-item>
-        <ion-label>email</ion-label>
-        <ion-input type="email" name="email" [(ngModel)]="user.email"></ion-input>
-      </ion-item>
+    <form [formGroup]="form">
+      <ion-list inset>
+        <ion-item>
+          <ion-label>email</ion-label>
+          <ion-input type="email" name="email" [(ngModel)]="user.email" formControlName="email"></ion-input>
+        </ion-item>
 
-      <ion-item>
-        <ion-label>password</ion-label>
-        <ion-input type="password" name="password" [(ngModel)]="user.password"></ion-input>
-      </ion-item>
-      <br/>
-      <button ion-button block (click)="registUser(user)"><ion-icon md="md-log-in"></ion-icon>Registrar empresa</button>
-      <button ion-button block color="danger">Cancelar</button>
+        <ion-item>
+          <ion-label>password</ion-label>
+          <ion-input type="password" name="password" [(ngModel)]="user.password" formControlName="password"></ion-input>
+        </ion-item>
+        <br/>
+        <button ion-button block (click)="registUser(user)"  [disabled]="!form.valid"><ion-icon md="md-log-in">
+        </ion-icon>Registrar empresa</button>
+        <button ion-button block color="danger" (click)="returnLogin()">Cancelar</button>
 
-    </ion-list>
+      </ion-list>
+    </form>
   </ion-card>
 </ion-content>

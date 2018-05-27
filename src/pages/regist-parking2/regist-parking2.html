@@ -6,44 +6,38 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title>Registrar Nuevo Parking (2)</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding class="background">
   <ion-card>
   <ion-list>
   <ion-item>
-    <ion-label>nombre parking</ion-label>
-    <ion-input type="text" name="nombre" [(ngModel)]="userParking.name"></ion-input>
+    <ion-input type="text" placeholder="Nombre parking" [(ngModel)]="userParking.name"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label>Provincia</ion-label>
-    <ion-input type="text" name="provincia" [(ngModel)]="parking.provincia"></ion-input>
+    <ion-input type="text" placeholder="Provincia" [(ngModel)]="parking.provincia"></ion-input>
   </ion-item>
 
       <ion-item>
-        <ion-label>Seleccione Localidad</ion-label>
-        <ion-input type="text" name="localidad" [(ngModel)]="parking.localidad"></ion-input>
+        <ion-input type="text" placeholder="Localidad" [(ngModel)]="parking.localidad"></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label>dirección</ion-label>
-        <ion-input type="text" name="direccion" [(ngModel)]="parking.direccion"></ion-input>
+        <ion-input type="text" placeholder="Direccion" [(ngModel)]="parking.direccion"></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label>telefono</ion-label>
-        <ion-input type="number" name="telefono"  [(ngModel)]="parking.telefono"></ion-input>
+        <ion-input type="number" placeholder="Teléfono"  [(ngModel)]="parking.telefono"></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label>Nº plazas parking</ion-label>
-        <ion-input type="number" name="plazas" [(ngModel)]="numPlazas" ngDefaultControl ></ion-input>
+        <ion-input type="number" placeholder="Plazas" [(ngModel)]="numPlazas" ngDefaultControl ></ion-input>
       </ion-item>
       <br/>
 
@@ -65,9 +59,9 @@
               <ion-option value="Control de acceso">Control de acceso</ion-option>
             </ion-select>
           </ion-item>
-        </ion-list>
+          <br>
           <button ion-button block (click)="createProfile()">Registrar Parking</button>
-
+        </ion-list>
       </ion-card>
   </ion-content>
 

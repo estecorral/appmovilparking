@@ -46,11 +46,11 @@
     </ion-item>
     <ion-item>
       <ion-label color="primary">Fecha inicio de la reserva</ion-label>
-      <ion-datetime displayFormat="DD/MMM/YYYY" [(ngModel)]="reserva.fechaInicio"></ion-datetime>
+      <ion-datetime displayFormat="DD/MMM/YYYY" [(ngModel)]="reserva.fechaInicio" max="2050"></ion-datetime>
     </ion-item>
     <ion-item>
       <ion-label color="primary">Fecha fin de la reserva</ion-label>
-      <ion-datetime displayFormat="DD/MMM/YYYY" [(ngModel)]="reserva.fechaFin"></ion-datetime>
+      <ion-datetime displayFormat="DD/MMM/YYYY" [(ngModel)]="reserva.fechaFin" max="2050"></ion-datetime>
     </ion-item>
     <ion-item>
       <ion-label color="primary">Persona de contacto</ion-label>

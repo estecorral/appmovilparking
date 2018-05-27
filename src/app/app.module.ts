@@ -10,7 +10,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule} from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { firebaseConfig } from "../config/firebase.config";
-
+import { FormsModule } from "@angular/forms";
 // servicios
 import { UserParkingProvider } from '../providers/user-parking/user-parking';
 import { ParkingsProvider } from '../providers/parkings/parkings';
@@ -57,7 +57,8 @@ import {MovimientosEmpresaParkingPage} from "../pages/movimientos-empresa-parkin
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -76,16 +77,16 @@ import {MovimientosEmpresaParkingPage} from "../pages/movimientos-empresa-parkin
     PlazasPage,
     MovimientosEmpresaPage,
     DetalleMovimientoPage,
-    MovimientosEmpresaParkingPage
+    MovimientosEmpresaParkingPage,
   ],
   providers: [
     StatusBar,
     SplashScreen,
-
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserParkingProvider,
     ParkingsProvider,
     AuthUserProvider,
+    FormsModule
   ]
 })
 export class AppModule {}

@@ -35,11 +35,15 @@ export class ParkingListPage {
   }
   // Recupera los distintos parkings según los caracteres que vamos introduciéndo en el buscador
   getItems($event) {
-    let val = $event.target.value;
-    this.startAt.next(val);
-    this.endAt.next(val + "\uf8ff");
+      let val = $event.target.value;
+      if (val) {
+        val = val.toLowerCase();
+        console.log(val);
+        this.startAt.next(val);
+        this.endAt.next(val + "\uf8ff");
+      }
   }
-// Query par recuperar las localidades ordenadas según los caracteres escritos en el buscador
+// Query para recuperar las localidades ordenadas según los caracteres escritos en el buscador
   firequery(start, end){
     return this.afDatabase.list('parkings', ref => ref.limitToFirst(4).orderByChild('localidad')
       .startAt(start).endAt(end)).valueChanges();
