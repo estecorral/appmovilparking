@@ -20,7 +20,7 @@
     <ion-item *ngFor="let plaza of plazas">
       <ion-icon md="md-square" color="danger" *ngIf="!estadoPlaza(plaza.estado)"></ion-icon>
       <ion-icon md="md-square" color="secondary" *ngIf="estadoPlaza(plaza.estado)"></ion-icon>
-      Plaza: {{plaza.numero}}
+      <b>Plaza:</b> {{plaza.numero}} -
       {{plaza.estado}}
     </ion-item>
   </ion-list>

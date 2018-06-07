@@ -49,7 +49,7 @@ import {MovimientosEmpresaParkingPage} from "../pages/movimientos-empresa-parkin
     PlazasPage,
     MovimientosEmpresaPage,
     DetalleMovimientoPage,
-    MovimientosEmpresaParkingPage
+    MovimientosEmpresaParkingPage,
   ],
   imports: [
     BrowserModule,

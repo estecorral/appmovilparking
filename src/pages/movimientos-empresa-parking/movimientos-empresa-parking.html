@@ -15,14 +15,20 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-fab top right edge #fab1>
+    <button ion-fab mini  color="secondary" (click)="datepicker.open()">
+      <ion-datetime #picker pickerFormat="DD/MMM/YYYY" style="display:none" [(ngModel)]="fecha" (ionChange)="filtro()" [min]="2000" [max]="2030" cancelText></ion-datetime>
+      <ion-icon md="md-search"></ion-icon>
+    </button>
+  </ion-fab>
   <ion-list *ngIf="reservaConfirmada()">
     <ion-list-header>{{reserva.nombreEmpresa}}</ion-list-header>
     <ion-item *ngFor="let movimiento of movimientos">
       <ion-icon md="md-arrow-round-forward" color="danger" *ngIf="movimiento.fechaSalida"></ion-icon>
       <ion-icon md="md-arrow-round-forward" color="secondary" *ngIf="!movimiento.fechaSalida"></ion-icon>
-      <h2>{{movimiento.matriculaCamion}}</h2>
-      <p>Entrada: {{movimiento.fechaEntrada}} {{movimiento.horaEntrada}}</p>
-      <p *ngIf="movimiento.fechaSalida">Salida: {{movimiento.fechaSalida}} {{movimiento.horaSalida}}</p>
+      <h1>{{movimiento.matriculaCamion}}</h1>
+      <p><b>Entrada:</b> {{movimiento.fechaEntrada}} {{movimiento.horaEntrada}} <b>Plaza:</b> {{movimiento.plaza}}</p>
+      <p *ngIf="movimiento.fechaSalida"><b>Salida:</b> {{movimiento.fechaSalida}} {{movimiento.horaSalida}}</p>
     </ion-item>
   </ion-list>
   <ion-list>

@@ -3,6 +3,7 @@ import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angula
 import {Movimiento} from "../../models/movimiento";
 import {AngularFireDatabase} from "angularfire2/database";
 import {HomePage} from "../home/home";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 
 /**
  * Página de registro de una nueva salida
@@ -27,12 +28,20 @@ export class NuevaSalidaPage {
   movimientoKey: string;
   plazas = [];
   keyPark: string;
+  form: FormGroup;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private afDatabase: AngularFireDatabase,
-              public alertCtrl: AlertController) {
+              public alertCtrl: AlertController, public fb: FormBuilder) {
     // Recibe la clave del parking desde el que que vamos a registrar la salida
     this.keyParking = this.navParams.get('keyParking');
-    console.log(this.keyParking);
+    // Comprueba datos introducidos en el formulario
+    this.form = this.fb.group({
+      fechaSalida: new FormControl('', Validators.required),
+      horaSalida: new FormControl('', Validators.required),
+      semiremolque: new FormControl('', Validators.required),
+      transportista: new FormControl('', Validators.required),
+      dni: new FormControl('', Validators.required)
+    });
     // Recupera la información de movimientos que están dentro del parking
     this.afDatabase.list('movimientos').valueChanges().subscribe(data => {
       if(!data){

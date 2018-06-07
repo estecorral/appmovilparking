@@ -5,6 +5,7 @@ import {AuthUserProvider} from "../../providers/auth-user/auth-user";
 import {Reserva} from "../../models/reserva";
 import {Empresa} from "../../models/empresa";
 import {HomePage} from "../home/home";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 
 /**
  * Página para la reserva de plazas
@@ -25,12 +26,21 @@ export class ReservaPlazasPage {
   claveEmpresa: string;
   telefono: string;
   reserva= {} as Reserva;
+  form: FormGroup;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private userAuth: AuthUserProvider,
-             private afDatabase: AngularFireDatabase ) {
+             private afDatabase: AngularFireDatabase, public fb: FormBuilder ) {
     // recoge la información del parking de la página anterior
     this.parking = this.navParams.get('parking');
-// Recupera la información del usuario autenticado
+    // Comprueba que los datos de los formularios son correctos:
+    this.form = this.fb.group( {
+      numPlazas: new FormControl('', Validators.required),
+      fechaInicio: new FormControl('', Validators.required),
+      fechaFin: new FormControl('', Validators.required),
+      contacto: new FormControl('', Validators.required),
+      observaciones: ''
+    });
+    // Recupera la información del usuario autenticado
     this.userAuth.verificaUsuario().subscribe(data => {
       if (!data){
         return;

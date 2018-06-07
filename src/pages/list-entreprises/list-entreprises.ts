@@ -47,7 +47,6 @@ export class ListEntreprisesPage {
           this.misReservas[i].key = action.key;
           i++;
         }
-        console.log(this.misReservas);
       });
     });
   }

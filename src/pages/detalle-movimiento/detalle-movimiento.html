@@ -17,16 +17,18 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-list-header>{{movimiento.matriculaCamion}}</ion-list-header>
+    <ion-list-header><h1>{{movimiento.matriculaCamion}}</h1></ion-list-header>
     <ion-item>
-      <b>Entrada: </b> {{movimiento.fechaEntrada}}
-      <p>- {{movimiento.nombreTransportista}} {{movimiento.dniTranportista}}</p>
-      <p>- {{movimiento.matriculaSemiremolque}}</p>
+      <h2><b>Entrada: </b> {{movimiento.fechaEntrada}} {{movimiento.horaEntrada}}</h2>
+      <p>- {{movimiento.nombreTransportista}}</p>
+      <p><b>- DNI:</b> {{movimiento.dniTranportista}}</p>
+      <p><b>- Semiremolque: </b>{{movimiento.matriculaSemiremolque}}</p>
     </ion-item>
     <ion-item *ngIf="movimiento.fechaSalida">
-      <b>Salida: </b> {{movimiento.fechaSalida}}
-      <p>- {{movimiento.nombreTransportistaSalida}} {{movimiento.dniTranportistaSalida}}</p>
-      <p>- {{movimiento.matriculaSemiremolqueSalida}}</p>
+      <h2><b>Salida: </b> {{movimiento.fechaSalida}} {{movimiento.horaSalida}}</h2>
+      <p>- {{movimiento.nombreTransportistaSalida}}</p>
+      <p><b>- DNI: </b>{{movimiento.dniTranportistaSalida}}</p>
+      <p><b>- Semiremolque: </b>{{movimiento.matriculaSemiremolqueSalida}}</p>
     </ion-item>
     <ion-item *ngIf="!movimiento.fechaSalida">
       <b>Salida: </b>

@@ -15,6 +15,7 @@
 </ion-header>
 
 <ion-content padding>
+  <form [formGroup]="form">
   <ion-list *ngIf="userEntrepriseData">
     <ion-item>
       <ion-avatar item-start class="avatar-circle">
@@ -42,28 +43,26 @@
     </ion-item>
     <ion-item>
       <ion-label color="primary">Nº de plazas a reservar</ion-label>
-      <ion-input type="number" [(ngModel)]="reserva.plazas"></ion-input>
+      <ion-input type="number" [(ngModel)]="reserva.plazas" formControlName="numPlazas"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label color="primary">Fecha inicio de la reserva</ion-label>
-      <ion-datetime displayFormat="DD/MMM/YYYY" [(ngModel)]="reserva.fechaInicio" max="2050"></ion-datetime>
+      <ion-datetime displayFormat="DD/MMM/YYYY" [(ngModel)]="reserva.fechaInicio" max="2050" formControlName="fechaInicio"></ion-datetime>
     </ion-item>
     <ion-item>
       <ion-label color="primary">Fecha fin de la reserva</ion-label>
-      <ion-datetime displayFormat="DD/MMM/YYYY" [(ngModel)]="reserva.fechaFin" max="2050"></ion-datetime>
+      <ion-datetime displayFormat="DD/MMM/YYYY" [(ngModel)]="reserva.fechaFin" max="2050" formControlName="fechaFin"></ion-datetime>
     </ion-item>
     <ion-item>
       <ion-label color="primary">Persona de contacto</ion-label>
-      <ion-input type="text" [(ngModel)]="reserva.nombreContacto"></ion-input>
+      <ion-input type="text" [(ngModel)]="reserva.nombreContacto" formControlName="contacto"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label color="primary">Observaciones</ion-label>
-      <ion-textarea type="text" [(ngModel)]="reserva.observaciones"></ion-textarea>
+      <ion-textarea type="text" [(ngModel)]="reserva.observaciones" formControlName="observaciones"></ion-textarea>
     </ion-item>
+    <br>
+    <button ion-button block color="primary" (click)="reservar()" [disabled]="!form.valid"><ion-icon md="md-bookmarks"></ion-icon>Reservar Plazas</button>
   </ion-list>
- <div class="reservaButton">
-  <div class="row">
-    <button ion-button block color="primary" (click)="reservar()"><ion-icon md="md-bookmarks"></ion-icon>Reservar Plazas</button>
-  </div>
-  </div>
+  </form>
 </ion-content>

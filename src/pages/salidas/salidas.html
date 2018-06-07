@@ -22,10 +22,10 @@
   <ion-list>
    <button ion-item *ngFor="let movimiento of movimientos">
       <ion-icon md="md-arrow-round-forward" color="danger"></ion-icon>
-      <h2>{{movimiento.matriculaCamion}}</h2>
+      <h1>{{movimiento.matriculaCamion}}</h1>
       <h3>{{movimiento.nombreEmpresaTransporte}}</h3>
-      <p>Entrada: {{movimiento.fechaEntrada}} {{movimiento.horaEntrada}}</p>
-      <p>Salida: {{movimiento.fechaSalida}} {{movimiento.horaSalida}}</p>
+     <p><b>Entrada:</b> {{movimiento.fechaEntrada}} {{movimiento.horaEntrada}}</p>
+     <p><b>Salida:</b> {{movimiento.fechaSalida}} {{movimiento.horaSalida}}</p>
     </button>
   </ion-list>
 </ion-content>

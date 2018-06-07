@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Movimiento} from "../../models/movimiento";
 import {AngularFireDatabase} from "angularfire2/database";
 import {DetalleMovimientoPage} from "../detalle-movimiento/detalle-movimiento";
+import {FormControl} from "@angular/forms";
 
 /**
  * Página de movimientos de una empresa
@@ -15,11 +16,15 @@ import {DetalleMovimientoPage} from "../detalle-movimiento/detalle-movimiento";
   selector: 'page-movimientos-empresa',
   templateUrl: 'movimientos-empresa.html',
 })
+
 export class MovimientosEmpresaPage {
+  @ViewChild('picker') datepicker;
   reserva: any;
   movimientos = [];
   movimietosFecha = [];
   fecha: Date;
+  allMovs = [];
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private afDatabase: AngularFireDatabase) {
     // Recupera los datos de la reserva de la página anterior
     this.reserva = this.navParams.get('reserva');
@@ -34,7 +39,7 @@ export class MovimientosEmpresaPage {
           this.movimientos.push(data[i]);
         }
       }
-      console.log(this.movimientos);
+      this.allMovs = this.movimientos;
     });
   }
 
@@ -55,6 +60,13 @@ export class MovimientosEmpresaPage {
   }
   // Función para filtrar movimientos por fecha
   filtro(){
-
+    this.movimientos = this.allMovs;
+    this.movimietosFecha = [];
+    for(let i = 0; i < this.movimientos.length; i++){
+      if(this.movimientos[i].fechaEntrada === this.fecha){
+        this.movimietosFecha.push(this.movimientos[i]);
+      }
+    }
+    this.movimientos = this.movimietosFecha;
   }
 }

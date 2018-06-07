@@ -15,47 +15,49 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-list>
+  <form [formGroup]="form">
+    <ion-list>
+      <ion-item>
+        <ion-label color="primary">Empresa</ion-label>
+        <ion-select type="text" [(ngModel)]="entrada.nombreEmpresaTransporte" formControlName="empresa">
+          <ion-option *ngFor="let empresa of reservas" [value]="empresa.nombreEmpresa"
+                      (ionSelect)="saveKeyEmpresa(empresa.keyEmpresa)">
+            {{empresa.nombreEmpresa}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary">Matricula camión</ion-label>
+        <ion-textarea type="text" [(ngModel)]="entrada.matriculaCamion" formControlName="camion"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary">Matricula semiremolque</ion-label>
+        <ion-textarea type="text" [(ngModel)]="entrada.matriculaSemiremolque" formControlName="semiremolque"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary">Transportista</ion-label>
+        <ion-textarea type="text" [(ngModel)]="entrada.nombreTransportista" formControlName="transportista"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary">DNI</ion-label>
+        <ion-textarea type="text" [(ngModel)]="entrada.dniTranportista" formControlName="dni"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary">Fecha de entrada</ion-label>
+        <ion-datetime displayFormat="DD/MMM/YYYY" [(ngModel)]="entrada.fechaEntrada" formControlName="fechaEntrada"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary">Hora de entrada</ion-label>
+        <ion-datetime displayFormat="HH:mm" [(ngModel)]="entrada.horaEntrada" formControlName="horaEntrada"></ion-datetime>
+      </ion-item>
+    </ion-list>
     <ion-item>
-      <ion-label color="primary">Empresa</ion-label>
-      <ion-select type="text" [(ngModel)]="entrada.nombreEmpresaTransporte">
-        <ion-option *ngFor="let empresa of reservas" [value]="empresa.nombreEmpresa" (ionSelect)="saveKeyEmpresa(empresa.keyEmpresa)">{{empresa.nombreEmpresa}}</ion-option>
+      <ion-label color="primary">Plaza</ion-label>
+      <ion-select [(ngModel)]="entrada.plaza" formControlName="plaza">
+        <ion-option *ngFor="let plaza of plazasLibres" [value]="plaza.numero">{{plaza.numero}}</ion-option>
       </ion-select>
     </ion-item>
-    <ion-item>
-        <ion-label color="primary">Matricula camión</ion-label>
-        <ion-textarea type="text" [(ngModel)]="entrada.matriculaCamion"></ion-textarea>
-    </ion-item>
-    <ion-item>
-      <ion-label color="primary">Matricula semiremolque</ion-label>
-      <ion-textarea type="text" [(ngModel)]="entrada.matriculaSemiremolque"></ion-textarea>
-    </ion-item>
-    <ion-item>
-      <ion-label color="primary">Transportista</ion-label>
-      <ion-textarea type="text" [(ngModel)]="entrada.nombreTransportista"></ion-textarea>
-    </ion-item>
-    <ion-item>
-      <ion-label color="primary">DNI</ion-label>
-      <ion-textarea type="text" [(ngModel)]="entrada.dniTranportista"></ion-textarea>
-    </ion-item>
-    <ion-item>
-      <ion-label color="primary">Fecha de entrada</ion-label>
-      <ion-datetime displayFormat="DD/MMM/YYYY" [(ngModel)]="entrada.fechaEntrada"></ion-datetime>
-    </ion-item>
-    <ion-item>
-      <ion-label color="primary">Hora de entrada</ion-label>
-      <ion-datetime displayFormat="HH:mm" [(ngModel)]="entrada.horaEntrada"></ion-datetime>
-    </ion-item>
-  </ion-list>
-  <ion-item>
-    <ion-label color="primary">Plaza</ion-label>
-    <ion-select [(ngModel)]="entrada.plaza">
-      <ion-option *ngFor="let plaza of plazasLibres" [value]="plaza.numero">{{plaza.numero}}</ion-option>
-    </ion-select>
-  </ion-item>
-  <div class="reservaButton">
-    <div class="row">
-      <button ion-button block color="primary" (click)="nuevaEntrada()"><ion-icon md="md-bookmarks"></ion-icon>Registrar nueva entrada</button>
-    </div>
-  </div>
+    <br>
+    <button ion-button block color="primary" (click)="nuevaEntrada()" [disabled]="!form.valid">
+      <ion-icon md="md-bookmarks"></ion-icon>Registrar nueva entrada</button>
+  </form>
 </ion-content>

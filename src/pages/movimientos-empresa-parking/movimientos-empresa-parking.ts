@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Movimiento} from "../../models/movimiento";
 import {AngularFireDatabase} from "angularfire2/database";
@@ -15,9 +15,12 @@ import {AngularFireDatabase} from "angularfire2/database";
   templateUrl: 'movimientos-empresa-parking.html',
 })
 export class MovimientosEmpresaParkingPage {
-
+  @ViewChild('picker') datepicker;
   reserva: any;
   movimientos = [];
+  movimietosFecha = [];
+  fecha: Date;
+  allMovs = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private afDatabase: AngularFireDatabase) {
    // recupera la información de la reserva de la página anterior
@@ -33,6 +36,7 @@ export class MovimientosEmpresaParkingPage {
           this.movimientos.push(data[i]);
         }
       }
+      this.allMovs = this.movimientos;
     });
   }
 
@@ -45,5 +49,15 @@ export class MovimientosEmpresaParkingPage {
     } else {
       return false;
     }
+  }
+  filtro(){
+    this.movimientos = this.allMovs;
+    this.movimietosFecha = [];
+    for(let i = 0; i < this.movimientos.length; i++){
+      if(this.movimientos[i].fechaEntrada === this.fecha){
+        this.movimietosFecha.push(this.movimientos[i]);
+      }
+    }
+    this.movimientos = this.movimietosFecha;
   }
 }

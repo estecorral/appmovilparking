@@ -21,9 +21,13 @@ export class GestionContratoPage {
   reserva: Reserva;
   keyEmpresa: string;
   empresa: any;
+  estado: string;
   constructor(public navCtrl: NavController, public navParams: NavParams, private afDatabase: AngularFireDatabase,
               public alertCtrl: AlertController) {
     this.reservaKey = this.navParams.get('key');
+
+  }
+  ionViewDidLoad(){
     // Recupera los datos de la reserva
     this.afDatabase.list('reserva').snapshotChanges().subscribe( actions =>
       actions.forEach(action => {
@@ -33,6 +37,7 @@ export class GestionContratoPage {
         this.reservaKey = this.navParams.get('key');
         if(this.reservaKey === action.key){
           this.reserva = action.payload.val();
+          this.estado = action.payload.val().estado;
           this.keyEmpresa = action.payload.val().keyEmpresa;
         }
       }));
@@ -48,15 +53,13 @@ export class GestionContratoPage {
       }
     });
   }
-  ionViewDidLoad(){
-
-  }
 
   // Comprueba el estado de una reserva para poder confirmarla
   estadoPendiente() {
-    if (this.reserva.estado === 'pendiente'){
+    if (this.estado === 'confirmada') {
       return true;
     }
+    return false;
   }
 // Función que una vez que confirmamos una reserva os muestra un alert de que se ha realizado correctamente
   confirmarContrato(){
