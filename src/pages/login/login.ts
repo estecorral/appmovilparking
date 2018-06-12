@@ -1,3 +1,15 @@
+/*
+Autor: Esteban Corral González
+Trabajo Final de Grado de Ingenieria Infomática de la UOC
+Esta obra está sujeta a una licencia de Reconocimiento-NoComercial-SinObraDerivada 3.0 España de Creative Commons
+Imagen login y home parkings app extraída de:
+https://pixabay.com/es/ciudad-personas-calle-noche-luces-1487891/
+Con licencia CC0 Creativ Commons
+
+Imagen home empresas extraída de:
+https://pixabay.com/es/cami%C3%B3n-por-carretera-escudo-2755172/
+Con licencia CC0 Creativ Commons
+*/
 import { Component } from '@angular/core';
 import {AlertController, IonicPage, NavController} from 'ionic-angular';
 import {AngularFireAuth} from "angularfire2/auth";

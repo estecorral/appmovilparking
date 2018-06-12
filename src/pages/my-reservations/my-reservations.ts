@@ -1,3 +1,8 @@
+/*
+Autor: Esteban Corral González
+Trabajo Final de Grado de Ingenieria Infomática de la UOC
+Esta obra está sujeta a una licencia de Reconocimiento-NoComercial-SinObraDerivada 3.0 España de Creative Commons
+*/
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {AngularFireDatabase} from "angularfire2/database";

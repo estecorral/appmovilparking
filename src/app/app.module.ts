@@ -1,3 +1,8 @@
+/*
+Autor: Esteban Corral González
+Trabajo Final de Grado de Ingenieria Infomática de la UOC
+Esta obra está sujeta a una licencia de Reconocimiento-NoComercial-SinObraDerivada 3.0 España de Creative Commons
+ */
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
