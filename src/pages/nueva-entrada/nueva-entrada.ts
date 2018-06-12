@@ -47,6 +47,7 @@ export class NuevaEntradaPage {
       horaEntrada: new FormControl('', Validators.required),
       plaza: new FormControl('', Validators.required)
     });
+    this.buscarPlazasLibres();
   }
 
   ionViewDidLoad() {
