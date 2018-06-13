@@ -8,7 +8,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Movimiento} from "../../models/movimiento";
 import {AngularFireDatabase} from "angularfire2/database";
 import {DetalleMovimientoPage} from "../detalle-movimiento/detalle-movimiento";
-import {FormControl} from "@angular/forms";
 
 /**
  * Página de movimientos de una empresa
